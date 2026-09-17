@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ICEMAN</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Tahoma, sans-serif;
+      background: #f7fff9;
+      color: #123524;
+      min-height: 100vh;
+    }
+
+    header {
+      width: 100%;
+      padding: 18px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      border-bottom: 1px solid #e5f2e9;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #16a34a;
+      letter-spacing: 1px;
+    }
+
+    .header-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .top-button {
+      border: none;
+      background: #ecfdf3;
+      color: #15803d;
+      padding: 10px 17px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .top-button:hover {
+      background: #dcfce7;
+      transform: translateY(-1px);
+    }
+
+    main {
+      width: min(1100px, 92%);
+      margin: auto;
+      padding: 55px 0 80px;
+    }
+
+    .badge {
+      width: fit-content;
+      margin: 0 auto 18px;
+      padding: 9px 15px;
+      border-radius: 30px;
+      background: #ecfdf3;
+      color: #15803d;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: clamp(42px, 8vw, 75px);
+      color: #16a34a;
+      line-height: 1;
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+    }
+
+    .description {
+      text-align: center;
+      color: #64748b;
+      font-size: 17px;
+      margin-bottom: 30px;
+    }
+
+    .search-box {
+      max-width: 760px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px;
+      background: white;
+      border: 1px solid #dceee2;
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(22, 163, 74, 0.08);
+    }
+
+    .search-icon {
+      padding-right: 10px;
+      font-size: 20px;
+    }
+
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      background: transparent;
+      min-width: 0;
+    }
+
+    .search-box button {
+      border: none;
+      background: #16a34a;
+      color: white;
+      padding: 13px 23px;
+      border-radius: 16px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .search-box button:hover {
+      background: #15803d;
+    }
+
+    .categories-section {
+      margin-top: 55px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .section-title h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #64748b;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .category-card {
+      border: 1px solid #e1f0e6;
+      background: white;
+      border-radius: 20px;
+      padding: 22px 15px;
+      cursor: pointer;
+      color: #123524;
+      font-size: 15px;
+      font-weight: 700;
+      transition: 0.2s;
+      box-shadow: 0 7px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .category-card:hover {
+      transform: translateY(-4px);
+      border-color: #86efac;
+      box-shadow: 0 12px 25px rgba(22, 163, 74, 0.10);
+    }
+
+    .category-icon {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .add-tool-box {
+      display: flex;
+      justify-content: center;
+      margin: 35px 0;
+    }
+
+    .add-tool-btn {
+      border: none;
+      background: #123524;
+      color: white;
+      padding: 14px 25px;
+      border-radius: 17px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+      display: none;
+    }
+
+    .add-tool-btn:hover {
+      background: #166534;
+    }
+
+    .results {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .tool-card {
+      background: white;
+      border: 1px solid #e1f0e6;
+      border-radius: 22px;
+      padding: 22px;
+      position: relative;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+    }
+
+    .tool-icon {
+      font-size: 35px;
+      margin-bottom: 12px;
+    }
+
+    .tool-card h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .tool-card p {
+      color: #64748b;
+      line-height: 1.7;
+      min-height: 50px;
+    }
+
+    .tool-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 15px 0;
+    }
+
+    .tool-tag {
+      background: #ecfdf3;
+      color: #15803d;
+      padding: 6px 9px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .tool-action {
+      display: block;
+      text-decoration: none;
+      text-align: center;
+      background: #16a34a;
+      color: white;
+      padding: 12px;
+      border-radius: 14px;
+      font-weight: 700;
+    }
+
+    .tool-action:hover {
+      background: #15803d;
+    }
+
+    .favorite-btn {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      border: none;
+      background: #f1f5f9;
+      border-radius: 12px;
+      width: 38px;
+      height: 38px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .delete-tool-btn {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 12px;
+      background: #fee2e2;
+      color: #dc2626;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .delete-tool-btn:hover {
+      background: #fecaca;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      width: min(500px, 100%);
+      background: white;
+      border-radius: 25px;
+      padding: 28px;
+      position: relative;
+    }
+
+    .modal-content h2 {
+      margin-bottom: 8px;
+    }
+
+    .modal-content p {
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+
+    .modal-content input,
+    .modal-content select {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 12px;
+      border: 1px solid #dceee2;
+      border-radius: 14px;
+      outline: none;
+      font-size: 15px;
+      background: white;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 14px;
+      left: 15px;
+      border: none;
+      background: #f1f5f9;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    .save-tool-btn {
+      width: 100%;
+      border: none;
+      background: #16a34a;
+      color: white;
+      padding: 14px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    footer {
+      text-align: center;
+      background: white;
+      border-top: 1px solid #e5f2e9;
+      padding: 28px 15px;
+      color: #64748b;
+      line-height: 2;
+    }
+
+    .developer-name {
+      display: block;
+      color: #16a34a;
+      font-weight: 800;
+    }
+
+    @media (max-width: 850px) {
+      .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .results {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 15px;
+      }
+
+      main {
+        padding-top: 35px;
+      }
+
+      .search-box {
+        padding: 7px;
+      }
+
+      .search-box button {
+        padding: 12px 15px;
+      }
+
+      .categories-grid,
+      .results {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 52px;
+      }
+
+      .header-buttons {
+        gap: 5px;
+      }
+
+      .header-buttons .top-button {
+        padding: 8px 10px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <div class="logo">
+      ICEMAN
+    </div>
+
+    <div class="header-buttons">
+
+      <button
+        class="top-button"
+        id="favoritesButton"
+      >
+        ⭐ المفضلة
+      </button>
+
+      <button
+        class="top-button"
+        id="adminLoginButton"
+      >
+        👑 دخول الإدارة
+      </button>
+
+      <button
+        class="top-button"
+        id="adminPanelButton"
+        style="display: none;"
+      >
+        ⚙️ لوحة الإدارة
+      </button>
+
+      <button
+        class="top-button"
+        id="adminLogoutButton"
+        style="display: none;"
+      >
+        🚪 خروج الإدارة
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <div class="badge">
+      ✦ أدواتك ومواقعك في مكان واحد
+    </div>
+
+    <h1>
+      ICEMAN
+    </h1>
+
+    <p class="description">
+      اكتشف أفضل التطبيقات والمواقع والأدوات بسهولة
+    </p>
+
+
+    <div class="search-box">
+
+      <div class="search-icon">
+        🔍
+      </div>
+
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="ابحث عن موقع أو تطبيق أو أداة..."
+        autocomplete="off"
+      >
+
+      <button id="searchButton">
+        بحث
+      </button>
+
+    </div>
+
+
+    <section class="categories-section">
+
+      <div class="section-title">
+
+        <h2>
+          استكشف حسب التصنيف
+        </h2>
+
+        <p>
+          اختار المجال اللي عايز تستكشف أدواته
+        </p>
+
+      </div>
+
+
+      <div class="categories-grid">
+
+        <button
+          class="category-card"
+          data-category="AI"
+        >
+          <span class="category-icon">🤖</span>
+          <span>الذكاء الاصطناعي</span>
+        </button>
+
+        <button
+          class="category-card"
+          data-category="برمجة"
+        >
+          <span class="category-icon">💻</span>
+          <span>البرمجة</span>
+        </button>
+
+        <button
+          class="category-card"
+          data-category="Cybersecurity"
+        >
+          <span class="category-icon">🔐</span>
+          <span>الأمن السيبراني</span>
+        </button>
+
+        <button
+          class="category-card"
+          data-category="تعليم"
+        >
+          <span class="category-icon">🎓</span>
+          <span>التعليم</span>
+        </button>
+
+        <button
+          class="category-card"
+          data-category="تصميم"
+        >
+          <span class="category-icon">🎨</span>
+          <span>التصميم</span>
+        </button>
+
+        <button
+          class="category-card"
+          data-category="فيديو"
+        >
+          <span class="category-icon">🎬</span>
+          <span>الفيديو</span>
+        </button>
+
+        <button
+          class="category-card"
+          data-category="أدوات"
+        >
+          <span class="category-icon">🛠️</span>
+          <span>الأدوات</span>
+        </button>
+
+        <button
+          class="category-card"
+          data-category="تطبيقات"
+        >
+          <span class="category-icon">📱</span>
+          <span>التطبيقات</span>
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <div class="add-tool-box">
+
+      <button
+        id="openAddTool"
+        class="add-tool-btn"
+      >
+        ＋ إضافة أداة
+      </button>
+
+    </div>
+
+
+    <div
+      id="results"
+      class="results"
+    ></div>
+
+  </main>
+
+
+  <!-- نافذة إضافة المحتوى -->
+
+  <div
+    id="addToolModal"
+    class="modal"
+  >
+
+    <div class="modal-content">
+
+      <button
+        id="closeAddTool"
+        class="close-modal"
+      >
+        ×
+      </button>
+
+      <h2>
+        إضافة أداة جديدة
+      </h2>
+
+      <p>
+        أضف موقع أو تطبيق أو أداة أو فيديو جديد إلى ICEMAN
+      </p>
+
+      <input
+        id="toolName"
+        type="text"
+        placeholder="اسم الأداة أو التطبيق أو الفيديو"
+        autocomplete="off"
+      >
+
+      <input
+        id="toolDescription"
+        type="text"
+        placeholder="وصف الأداة"
+        autocomplete="off"
+      >
+
+      <select id="toolCategory">
+
+        <option value="">
+          اختر التصنيف
+        </option>
+
+        <option value="AI">
+          🤖 الذكاء الاصطناعي
+        </option>
+
+        <option value="برمجة">
+          💻 برمجة
+        </option>
+
+        <option value="Cybersecurity">
+          🔐 الأمن السيبراني
+        </option>
+
+        <option value="تعليم">
+          🎓 تعليم
+        </option>
+
+        <option value="تصميم">
+          🎨 تصميم
+        </option>
+
+        <option value="فيديو">
+          🎬 فيديو
+        </option>
+
+        <option value="أدوات">
+          🛠️ أدوات
+        </option>
+
+        <option value="تطبيقات">
+          📱 تطبيقات
+        </option>
+
+      </select>
+
+
+      <select id="toolType">
+
+        <option value="">
+          اختر النوع
+        </option>
+
+        <option value="موقع">
+          🌐 موقع
+        </option>
+
+        <option value="تطبيق">
+          📱 تطبيق
+        </option>
+
+        <option value="أداة">
+          🛠️ أداة
+        </option>
+
+        <option value="فيديو">
+          🎬 فيديو
+        </option>
+
+      </select>
+
+
+      <input
+        id="toolUrl"
+        type="url"
+        placeholder="https://example.com"
+        autocomplete="off"
+      >
+
+
+      <button
+        id="saveTool"
+        class="save-tool-btn"
+      >
+        حفظ وإضافة
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- نافذة دخول الإدارة -->
+
+  <div
+    id="adminModal"
+    class="modal"
+  >
+
+    <div class="modal-content">
+
+      <button
+        id="closeAdminModal"
+        class="close-modal"
+      >
+        ×
+      </button>
+
+      <h2>
+        👑 دخول الإدارة
+      </h2>
+
+      <p>
+        تسجيل الدخول إلى لوحة تحكم ICEMAN
+      </p>
+
+      <input
+        id="adminEmail"
+        type="email"
+        placeholder="البريد الإلكتروني"
+        autocomplete="email"
+      >
+
+      <input
+        id="adminPassword"
+        type="password"
+        placeholder="كلمة المرور"
+        autocomplete="current-password"
+      >
+
+      <button
+        id="adminLoginSubmit"
+        class="save-tool-btn"
+      >
+        دخول الإدارة
+      </button>
+
+      <div
+        id="adminMessage"
+        style="
+          text-align: center;
+          margin-top: 15px;
+          font-weight: 700;
+        "
+      ></div>
+
+    </div>
+
+  </div>
+
+
+  <footer>
+
+    <div>
+      © 2026 ICEMAN
+    </div>
+
+    <div>
+      تم التطوير بواسطة
+    </div>
+
+    <span class="developer-name">
+      ✦ المهندس محمد إبراهيم محمد أحمد عامر ✦
+    </span>
+
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="app.js"></script>
+  <script src="admin.js"></script>
+
+</body>
+
+</html>

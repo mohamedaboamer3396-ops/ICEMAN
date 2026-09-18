@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -218,6 +219,88 @@
       font-size: 13px;
     }
 
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .tool-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 18px;
+      background: #fff;
+      transition: .2s;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-3px);
+      border-color: #86efac;
+      box-shadow: 0 10px 25px rgba(0,0,0,.06);
+    }
+
+    .tool-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #dcfce7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .tool-card h3 {
+      font-size: 17px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .tool-card p {
+      color: #6b7280;
+      font-size: 13px;
+      line-height: 1.7;
+      margin-bottom: 13px;
+      flex: 1;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 13px;
+    }
+
+    .tag {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .tool-link {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: #16a34a;
+      color: #fff;
+      padding: 10px;
+      border-radius: 11px;
+      font-weight: 900;
+      transition: .2s;
+    }
+
+    .tool-link:hover {
+      background: #15803d;
+    }
+
     .empty-content {
       min-height: 300px;
       display: flex;
@@ -269,6 +352,29 @@
       font-size: 15px;
       font-weight: 900;
       margin-top: 6px;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 50px 20px;
+      color: #6b7280;
+      font-weight: 800;
+    }
+
+    .error-box {
+      text-align: center;
+      padding: 40px 20px;
+      color: #b91c1c;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: 15px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 1050px) {
+      .tools-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 800px) {
@@ -323,6 +429,12 @@
       }
     }
 
+    @media (max-width: 600px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 500px) {
       nav {
         height: 62px;
@@ -370,7 +482,6 @@
     </div>
   </nav>
 
-
   <div class="page-layout">
 
     <aside class="sidebar">
@@ -386,94 +497,95 @@
           data-icon="🎵"
           data-title="كل الصوت والموسيقى"
           data-description="جميع أدوات ومواقع الصوت والموسيقى"
+          data-filter=""
         >
           <span class="category-icon">🎵</span>
           <span class="category-name">كل الصوت</span>
         </button>
-
 
         <button
           class="category-button"
           data-icon="🎧"
           data-title="مشغلات الصوت"
           data-description="أدوات ومواقع لتشغيل والاستماع إلى الملفات الصوتية"
+          data-filter="مشغل"
         >
           <span class="category-icon">🎧</span>
           <span class="category-name">مشغلات الصوت</span>
         </button>
-
 
         <button
           class="category-button"
           data-icon="🎙️"
           data-title="تسجيل الصوت"
           data-description="أدوات تسجيل الصوت وإنشاء التسجيلات الصوتية"
+          data-filter="تسجيل"
         >
           <span class="category-icon">🎙️</span>
           <span class="category-name">تسجيل الصوت</span>
         </button>
-
 
         <button
           class="category-button"
           data-icon="✂️"
           data-title="تحرير الصوت"
           data-description="أدوات قص ودمج وتعديل وتحسين الملفات الصوتية"
+          data-filter="تحرير"
         >
           <span class="category-icon">✂️</span>
           <span class="category-name">تحرير الصوت</span>
         </button>
-
 
         <button
           class="category-button"
           data-icon="🤖"
           data-title="الذكاء الاصطناعي للصوت"
           data-description="أدوات الذكاء الاصطناعي لإنشاء ومعالجة الصوت"
+          data-filter="AI"
         >
           <span class="category-icon">🤖</span>
           <span class="category-name">AI للصوت</span>
         </button>
-
 
         <button
           class="category-button"
           data-icon="🗣️"
           data-title="تحويل النص إلى صوت"
           data-description="أدوات تحويل النصوص المكتوبة إلى أصوات طبيعية"
+          data-filter="نص إلى صوت"
         >
           <span class="category-icon">🗣️</span>
           <span class="category-name">النص إلى صوت</span>
         </button>
-
 
         <button
           class="category-button"
           data-icon="📝"
           data-title="تحويل الصوت إلى نص"
           data-description="أدوات تحويل التسجيلات الصوتية والكلام إلى نص مكتوب"
+          data-filter="صوت إلى نص"
         >
           <span class="category-icon">📝</span>
           <span class="category-name">الصوت إلى نص</span>
         </button>
-
 
         <button
           class="category-button"
           data-icon="🎼"
           data-title="صناعة الموسيقى"
           data-description="أدوات ومواقع إنشاء وتأليف الموسيقى والألحان"
+          data-filter="موسيقى"
         >
           <span class="category-icon">🎼</span>
           <span class="category-name">صناعة الموسيقى</span>
         </button>
-
 
         <button
           class="category-button"
           data-icon="🔊"
           data-title="تحسين الصوت"
           data-description="أدوات إزالة الضوضاء وتحسين جودة التسجيلات الصوتية"
+          data-filter="تحسين"
         >
           <span class="category-icon">🔊</span>
           <span class="category-name">تحسين الصوت</span>
@@ -482,7 +594,6 @@
       </div>
 
     </aside>
-
 
     <main class="main-content">
 
@@ -502,7 +613,6 @@
         </p>
 
       </section>
-
 
       <section class="content-box">
 
@@ -529,22 +639,26 @@
 
         </div>
 
+        <div
+          id="toolsGrid"
+          class="tools-grid"
+        ></div>
 
-        <div class="empty-content">
-
-          <div class="empty-icon">
-            🎵
-          </div>
+        <div
+          id="emptyContent"
+          class="empty-content"
+          style="display:none;"
+        >
+          <div class="empty-icon">🎵</div>
 
           <h3>
-            المحتوى قادم قريبًا
+            لا توجد أدوات حالياً
           </h3>
 
           <p>
             سيتم إضافة أدوات ومواقع الصوت والموسيقى
-            بعد تجهيز قاعدة بيانات ICEMAN.
+            قريبًا إلى ICEMAN.
           </p>
-
         </div>
 
       </section>
@@ -552,7 +666,6 @@
     </main>
 
   </div>
-
 
   <footer>
 
@@ -570,6 +683,9 @@
 
   </footer>
 
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
 
   <script>
 
@@ -585,6 +701,254 @@
     const contentDescription =
       document.getElementById("contentDescription");
 
+    const toolsGrid =
+      document.getElementById("toolsGrid");
+
+    const emptyContent =
+      document.getElementById("emptyContent");
+
+
+    let allTools = [];
+
+
+    function escapeHTML(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+
+    function safeURL(value) {
+
+      try {
+
+        const url = new URL(value);
+
+        if (
+          url.protocol === "http:" ||
+          url.protocol === "https:"
+        ) {
+          return url.href;
+        }
+
+      } catch (error) {}
+
+      return "#";
+
+    }
+
+
+    function getToolIcon(tool) {
+
+      const text =
+        `${tool.name || ""} ${tool.description || ""} ${tool.type || ""}`
+          .toLowerCase();
+
+      if (
+        text.includes("ai") ||
+        text.includes("ذكاء") ||
+        text.includes("artificial")
+      ) {
+        return "🤖";
+      }
+
+      if (
+        text.includes("music") ||
+        text.includes("موسيقى")
+      ) {
+        return "🎼";
+      }
+
+      if (
+        text.includes("record") ||
+        text.includes("تسجيل")
+      ) {
+        return "🎙️";
+      }
+
+      if (
+        text.includes("text to speech") ||
+        text.includes("نص إلى صوت")
+      ) {
+        return "🗣️";
+      }
+
+      if (
+        text.includes("speech to text") ||
+        text.includes("صوت إلى نص")
+      ) {
+        return "📝";
+      }
+
+      if (
+        text.includes("edit") ||
+        text.includes("تحرير")
+      ) {
+        return "✂️";
+      }
+
+      if (
+        text.includes("noise") ||
+        text.includes("تحسين")
+      ) {
+        return "🔊";
+      }
+
+      return "🎵";
+    }
+
+
+    function renderTools(tools) {
+
+      if (!toolsGrid) return;
+
+      if (!tools || tools.length === 0) {
+
+        toolsGrid.innerHTML = "";
+
+        emptyContent.style.display = "flex";
+
+        return;
+
+      }
+
+      emptyContent.style.display = "none";
+
+      toolsGrid.innerHTML =
+        tools.map((tool) => {
+
+          const url =
+            safeURL(tool.url);
+
+          return `
+            <article class="tool-card">
+
+              <div class="tool-icon">
+                ${getToolIcon(tool)}
+              </div>
+
+              <h3>
+                ${escapeHTML(tool.name)}
+              </h3>
+
+              <p>
+                ${escapeHTML(tool.description)}
+              </p>
+
+              <div class="tags">
+
+                <span class="tag">
+                  ${escapeHTML(tool.type || "أداة")}
+                </span>
+
+                <span class="tag">
+                  ${escapeHTML(tool.price || "مجاني")}
+                </span>
+
+              </div>
+
+              <a
+                class="tool-link"
+                href="${escapeHTML(url)}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                🌐 فتح الأداة
+              </a>
+
+            </article>
+          `;
+
+        }).join("");
+
+    }
+
+
+    async function loadTools() {
+
+      if (!toolsGrid) return;
+
+      toolsGrid.innerHTML = `
+        <div class="loading" style="grid-column:1/-1;">
+          جاري تحميل أدوات الصوت والموسيقى... 🎵
+        </div>
+      `;
+
+      emptyContent.style.display = "none";
+
+
+      const {
+        data,
+        error
+      } = await supabaseClient
+        .from("tools")
+        .select("*")
+        .eq("category", "صوت")
+        .order("created_at", {
+          ascending: false
+        });
+
+
+      if (error) {
+
+        console.error(
+          "خطأ في تحميل أدوات الصوت:",
+          error
+        );
+
+        toolsGrid.innerHTML = `
+          <div
+            class="error-box"
+            style="grid-column:1/-1;"
+          >
+            حصل خطأ أثناء تحميل أدوات الصوت.
+            <br>
+            حاول تحديث الصفحة.
+          </div>
+        `;
+
+        return;
+
+      }
+
+
+      allTools = data || [];
+
+      renderTools(allTools);
+
+    }
+
+
+    function filterTools(filter) {
+
+      if (!filter) {
+
+        renderTools(allTools);
+
+        return;
+
+      }
+
+
+      const filtered =
+        allTools.filter((tool) => {
+
+          const text =
+            `${tool.name || ""} ${tool.description || ""} ${tool.type || ""}`
+              .toLowerCase();
+
+          return text.includes(filter.toLowerCase());
+
+        });
+
+
+      renderTools(filtered);
+
+    }
+
 
     categoryButtons.forEach((button) => {
 
@@ -596,6 +960,7 @@
 
         button.classList.add("active");
 
+
         const title =
           button.dataset.title;
 
@@ -605,15 +970,28 @@
         const description =
           button.dataset.description;
 
+        const filter =
+          button.dataset.filter || "";
+
+
         contentIcon.textContent = icon;
+
         contentTitle.textContent = title;
+
         contentDescription.textContent = description;
+
+
+        filterTools(filter);
 
       });
 
     });
 
+
+    loadTools();
+
   </script>
 
 </body>
 </html>
+```

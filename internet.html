@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -218,7 +219,92 @@
       font-size: 13px;
     }
 
-    .empty-content {
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .tool-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, .04);
+      transition: .2s;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+    }
+
+    .tool-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #ecfdf5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+      margin-bottom: 13px;
+    }
+
+    .tool-card h3 {
+      font-size: 19px;
+      font-weight: 900;
+      margin-bottom: 9px;
+    }
+
+    .tool-card p {
+      color: #6b7280;
+      font-size: 14px;
+      line-height: 1.8;
+      min-height: 50px;
+      margin-bottom: 15px;
+    }
+
+    .tool-tags {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    .tool-tag {
+      background: #f3f4f6;
+      color: #374151;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tool-tag.green {
+      background: #ecfdf5;
+      color: #15803d;
+    }
+
+    .open-tool {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: #16a34a;
+      color: #fff;
+      padding: 11px;
+      border-radius: 12px;
+      font-weight: 900;
+      transition: .2s;
+    }
+
+    .open-tool:hover {
+      background: #15803d;
+    }
+
+    .loading,
+    .empty-content,
+    .error-content {
       min-height: 300px;
       display: flex;
       flex-direction: column;
@@ -233,17 +319,49 @@
       margin-bottom: 15px;
     }
 
-    .empty-content h3 {
+    .loading-icon {
+      font-size: 42px;
+      margin-bottom: 15px;
+      animation: spin 1.2s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loading h3,
+    .empty-content h3,
+    .error-content h3 {
       font-size: 20px;
       margin-bottom: 8px;
       font-weight: 900;
     }
 
-    .empty-content p {
+    .loading p,
+    .empty-content p,
+    .error-content p {
       color: #6b7280;
       font-size: 14px;
       line-height: 1.8;
       max-width: 500px;
+    }
+
+    .retry-button {
+      margin-top: 15px;
+      border: none;
+      background: #16a34a;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-weight: 800;
+      cursor: pointer;
     }
 
     footer {
@@ -355,6 +473,10 @@
         min-width: 45px;
         font-size: 21px;
       }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -386,6 +508,7 @@
           data-icon="🌐"
           data-title="كل الإنترنت والشبكات"
           data-description="جميع أدوات ومواقع الإنترنت والشبكات"
+          data-filter="all"
         >
           <span class="category-icon">🌐</span>
           <span class="category-name">كل الإنترنت</span>
@@ -397,6 +520,7 @@
           data-icon="🔎"
           data-title="البحث على الإنترنت"
           data-description="محركات وأدوات البحث والوصول إلى المعلومات"
+          data-filter="بحث"
         >
           <span class="category-icon">🔎</span>
           <span class="category-name">البحث</span>
@@ -408,6 +532,7 @@
           data-icon="📡"
           data-title="الشبكات"
           data-description="أدوات ومواقع تساعد في فحص الشبكات ومعلومات الاتصال"
+          data-filter="شبكات"
         >
           <span class="category-icon">📡</span>
           <span class="category-name">الشبكات</span>
@@ -419,6 +544,7 @@
           data-icon="🔗"
           data-title="الروابط"
           data-description="أدوات اختصار الروابط وفحصها وإدارتها"
+          data-filter="روابط"
         >
           <span class="category-icon">🔗</span>
           <span class="category-name">الروابط</span>
@@ -430,6 +556,7 @@
           data-icon="📶"
           data-title="فحص سرعة الإنترنت"
           data-description="أدوات قياس سرعة الاتصال وجودة الشبكة"
+          data-filter="سرعة"
         >
           <span class="category-icon">📶</span>
           <span class="category-name">سرعة الإنترنت</span>
@@ -441,6 +568,7 @@
           data-icon="🔐"
           data-title="الخصوصية"
           data-description="أدوات ومواقع تساعد على تحسين الخصوصية أثناء استخدام الإنترنت"
+          data-filter="خصوصية"
         >
           <span class="category-icon">🔐</span>
           <span class="category-name">الخصوصية</span>
@@ -452,6 +580,7 @@
           data-icon="☁️"
           data-title="الخدمات السحابية"
           data-description="أدوات التخزين والمشاركة والخدمات السحابية"
+          data-filter="سحابية"
         >
           <span class="category-icon">☁️</span>
           <span class="category-name">الخدمات السحابية</span>
@@ -463,6 +592,7 @@
           data-icon="🖥️"
           data-title="أدوات الويب"
           data-description="أدوات مفيدة للعمل والتصفح وإدارة المواقع على الإنترنت"
+          data-filter="ويب"
         >
           <span class="category-icon">🖥️</span>
           <span class="category-name">أدوات الويب</span>
@@ -519,20 +649,23 @@
         </div>
 
 
-        <div class="empty-content">
+        <div id="toolsContainer">
 
-          <div class="empty-icon">
-            🌐
+          <div class="loading">
+
+            <div class="loading-icon">
+              ⏳
+            </div>
+
+            <h3>
+              جاري تحميل الأدوات...
+            </h3>
+
+            <p>
+              يتم الآن تحميل المحتوى من قاعدة بيانات ICEMAN.
+            </p>
+
           </div>
-
-          <h3>
-            المحتوى قادم قريبًا
-          </h3>
-
-          <p>
-            سيتم إضافة أدوات ومواقع الإنترنت والشبكات
-            بعد تجهيز قاعدة بيانات ICEMAN.
-          </p>
 
         </div>
 
@@ -560,6 +693,13 @@
   </footer>
 
 
+  <!-- Supabase -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="supabase.js"></script>
+
+
   <script>
 
     const categoryButtons =
@@ -574,6 +714,12 @@
     const contentDescription =
       document.getElementById("contentDescription");
 
+    const toolsContainer =
+      document.getElementById("toolsContainer");
+
+
+    let allInternetTools = [];
+
 
     categoryButtons.forEach((button) => {
 
@@ -585,24 +731,259 @@
 
         button.classList.add("active");
 
-        const title =
-          button.dataset.title;
-
-        const icon =
+        contentIcon.textContent =
           button.dataset.icon;
 
-        const description =
+        contentTitle.textContent =
+          button.dataset.title;
+
+        contentDescription.textContent =
           button.dataset.description;
 
-        contentIcon.textContent = icon;
-        contentTitle.textContent = title;
-        contentDescription.textContent = description;
+        const filter =
+          button.dataset.filter;
+
+        renderTools(filter);
 
       });
 
     });
 
+
+    async function loadInternetTools() {
+
+      toolsContainer.innerHTML = `
+        <div class="loading">
+          <div class="loading-icon">⏳</div>
+
+          <h3>
+            جاري تحميل الأدوات...
+          </h3>
+
+          <p>
+            يتم الآن تحميل المحتوى من قاعدة بيانات ICEMAN.
+          </p>
+        </div>
+      `;
+
+
+      const {
+        data,
+        error
+      } = await supabaseClient
+        .from("tools")
+        .select("*")
+        .eq("category", "إنترنت")
+        .order("created_at", {
+          ascending: false
+        });
+
+
+      if (error) {
+
+        console.error(
+          "خطأ في تحميل أدوات الإنترنت:",
+          error
+        );
+
+        toolsContainer.innerHTML = `
+          <div class="error-content">
+
+            <div class="empty-icon">
+              ⚠️
+            </div>
+
+            <h3>
+              حدث خطأ أثناء تحميل الأدوات
+            </h3>
+
+            <p>
+              لم نتمكن من تحميل أدوات الإنترنت حاليًا.
+            </p>
+
+            <button
+              class="retry-button"
+              onclick="loadInternetTools()"
+            >
+              إعادة المحاولة
+            </button>
+
+          </div>
+        `;
+
+        return;
+      }
+
+
+      allInternetTools = data || [];
+
+      renderTools("all");
+    }
+
+
+    function renderTools(filter) {
+
+      let tools = [...allInternetTools];
+
+
+      /*
+        كل الإنترنت = عرض كل الأدوات.
+
+        الأقسام الفرعية تعتمد على البيانات الموجودة
+        في الاسم والوصف والنوع حاليًا.
+      */
+
+      if (filter !== "all") {
+
+        tools = tools.filter((tool) => {
+
+          const searchableText = `
+            ${tool.name || ""}
+            ${tool.description || ""}
+            ${tool.type || ""}
+          `.toLowerCase();
+
+          return searchableText.includes(
+            filter.toLowerCase()
+          );
+
+        });
+
+      }
+
+
+      if (tools.length === 0) {
+
+        toolsContainer.innerHTML = `
+          <div class="empty-content">
+
+            <div class="empty-icon">
+              🌐
+            </div>
+
+            <h3>
+              لا توجد أدوات هنا حاليًا
+            </h3>
+
+            <p>
+              سيتم ظهور الأدوات والمواقع التي تضيفها
+              من لوحة الإدارة تلقائيًا.
+            </p>
+
+          </div>
+        `;
+
+        return;
+      }
+
+
+      toolsContainer.innerHTML = `
+        <div class="tools-grid">
+
+          ${tools.map((tool) => {
+
+            const safeUrl =
+              isSafeUrl(tool.url)
+                ? tool.url
+                : "#";
+
+            return `
+              <article class="tool-card">
+
+                <div class="tool-icon">
+                  🌐
+                </div>
+
+                <h3>
+                  ${escapeHTML(tool.name || "بدون اسم")}
+                </h3>
+
+                <p>
+                  ${escapeHTML(
+                    tool.description ||
+                    "لا يوجد وصف."
+                  )}
+                </p>
+
+                <div class="tool-tags">
+
+                  <span class="tool-tag green">
+                    ${escapeHTML(
+                      tool.type || "موقع"
+                    )}
+                  </span>
+
+                  <span class="tool-tag">
+                    ${escapeHTML(
+                      tool.price || "مجاني"
+                    )}
+                  </span>
+
+                </div>
+
+                <a
+                  class="open-tool"
+                  href="${escapeAttribute(safeUrl)}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  🌐 فتح الموقع
+                </a>
+
+              </article>
+            `;
+
+          }).join("")}
+
+        </div>
+      `;
+    }
+
+
+    function isSafeUrl(url) {
+
+      try {
+
+        const parsed =
+          new URL(url);
+
+        return (
+          parsed.protocol === "https:" ||
+          parsed.protocol === "http:"
+        );
+
+      } catch {
+
+        return false;
+
+      }
+
+    }
+
+
+    function escapeHTML(value) {
+
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+    function escapeAttribute(value) {
+
+      return escapeHTML(value);
+
+    }
+
+
+    loadInternetTools();
+
   </script>
 
 </body>
 </html>
+```

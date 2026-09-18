@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -20,21 +21,14 @@
       min-height: 100vh;
     }
 
-    /* =========================
-       NAVBAR
-    ========================= */
-
     nav {
       height: 70px;
       background: #ffffff;
       border-bottom: 1px solid #e5e7eb;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       padding: 0 35px;
-
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -56,13 +50,10 @@
     .nav-links a {
       text-decoration: none;
       color: #374151;
-
       padding: 10px 15px;
       border-radius: 10px;
-
       font-size: 14px;
       font-weight: 700;
-
       transition: 0.2s;
     }
 
@@ -71,36 +62,21 @@
       color: #059669;
     }
 
-    /* =========================
-       PAGE LAYOUT
-    ========================= */
-
     .page-layout {
       width: min(1400px, 95%);
       margin: 30px auto;
-
       display: grid;
       grid-template-columns: 220px 1fr;
-
       gap: 25px;
-
       direction: rtl;
     }
 
-    /* =========================
-       SIDEBAR
-    ========================= */
-
     .sidebar {
       background: #ffffff;
-
       border: 1px solid #e5e7eb;
       border-radius: 18px;
-
       padding: 15px;
-
       height: fit-content;
-
       position: sticky;
       top: 90px;
     }
@@ -108,9 +84,7 @@
     .sidebar-title {
       font-size: 17px;
       font-weight: 900;
-
       margin-bottom: 15px;
-
       color: #111827;
     }
 
@@ -122,25 +96,16 @@
 
     .category-button {
       width: 100%;
-
       border: none;
       background: transparent;
-
       display: flex;
       align-items: center;
-
       gap: 10px;
-
       padding: 9px;
-
       border-radius: 12px;
-
       cursor: pointer;
-
       text-align: right;
-
       font-family: inherit;
-
       transition: 0.2s;
     }
 
@@ -156,19 +121,13 @@
     .category-icon {
       width: 36px;
       height: 36px;
-
       min-width: 36px;
-
       border-radius: 50%;
-
       background: #f0fdf4;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       font-size: 17px;
-
       border: 1px solid #bbf7d0;
     }
 
@@ -183,211 +142,239 @@
       line-height: 1.4;
     }
 
-    /* =========================
-       MAIN CONTENT
-    ========================= */
-
     .main-content {
       min-width: 0;
     }
 
     .hero {
       background: #ffffff;
-
       border: 1px solid #e5e7eb;
       border-radius: 22px;
-
       padding: 35px;
-
       margin-bottom: 20px;
     }
 
     .hero-badge {
       display: inline-block;
-
       background: #ecfdf5;
       color: #047857;
-
       border: 1px solid #a7f3d0;
-
       padding: 7px 12px;
-
       border-radius: 999px;
-
       font-size: 13px;
       font-weight: 800;
-
       margin-bottom: 15px;
     }
 
     .hero h1 {
       font-size: clamp(30px, 5vw, 48px);
-
       line-height: 1.1;
-
       margin-bottom: 12px;
-
       font-weight: 900;
     }
 
     .hero p {
       color: #6b7280;
-
       font-size: 15px;
-
       line-height: 1.8;
-
       max-width: 700px;
     }
 
-    /* =========================
-       CONTENT BOX
-    ========================= */
-
     .content-box {
       background: #ffffff;
-
       border: 1px solid #e5e7eb;
-
       border-radius: 22px;
-
       padding: 25px;
     }
 
     .content-header {
       display: flex;
       align-items: center;
-
       gap: 15px;
-
       padding-bottom: 20px;
-
       border-bottom: 1px solid #e5e7eb;
-
       margin-bottom: 20px;
     }
 
     .content-icon {
       width: 52px;
       height: 52px;
-
       min-width: 52px;
-
       border-radius: 15px;
-
       background: #dcfce7;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       font-size: 25px;
     }
 
     .content-header h2 {
       font-size: 22px;
-
       margin-bottom: 5px;
-
       font-weight: 900;
     }
 
     .content-header p {
       color: #6b7280;
-
       font-size: 13px;
     }
 
-    /* =========================
-       EMPTY CONTENT
-    ========================= */
-
+    .loading,
+    .error-content,
     .empty-content {
       min-height: 300px;
-
       display: flex;
       flex-direction: column;
-
       align-items: center;
       justify-content: center;
-
       text-align: center;
-
       padding: 30px;
     }
 
+    .loading-icon,
     .empty-icon {
       font-size: 50px;
-
       margin-bottom: 15px;
     }
 
+    .loading h3,
+    .error-content h3,
     .empty-content h3 {
       font-size: 20px;
-
       margin-bottom: 8px;
-
       font-weight: 900;
     }
 
+    .loading p,
+    .error-content p,
     .empty-content p {
       color: #6b7280;
-
       font-size: 14px;
-
       line-height: 1.8;
-
       max-width: 500px;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .tool-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 20px;
+      transition: 0.2s;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-3px);
+      border-color: #bbf7d0;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    }
+
+    .tool-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #dcfce7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+      margin-bottom: 13px;
+    }
+
+    .tool-card h3 {
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .tool-card p {
+      color: #6b7280;
+      font-size: 14px;
+      line-height: 1.7;
+      min-height: 48px;
+      margin-bottom: 14px;
+    }
+
+    .tool-tags {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    .tool-tag {
+      background: #f3f4f6;
+      color: #374151;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .tool-tag.green {
+      background: #ecfdf5;
+      color: #15803d;
+    }
+
+    .open-tool {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: #16a34a;
+      color: #ffffff;
+      padding: 11px;
+      border-radius: 11px;
+      font-weight: 900;
+      transition: 0.2s;
+    }
+
+    .open-tool:hover {
+      background: #15803d;
+    }
+
+    .retry-button {
+      border: none;
+      background: #16a34a;
+      color: #ffffff;
+      padding: 11px 18px;
+      border-radius: 11px;
+      font-family: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 15px;
+    }
 
     footer {
       text-align: center;
-
       padding: 40px 20px;
-
       margin-top: 50px;
-
       color: #6b7280;
-
       font-size: 13px;
-
       line-height: 1.8;
     }
 
     .developer-name {
       display: block;
-
       color: #166534;
-
       font-size: 15px;
-
       font-weight: 900;
-
       margin-top: 5px;
     }
 
     .partner-name {
       display: block;
-
       color: #451a03;
-
       font-size: 15px;
-
       font-weight: 900;
-
       margin-top: 6px;
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
-
     @media (max-width: 800px) {
-
       nav {
         padding: 0 15px;
       }
@@ -399,17 +386,13 @@
 
       .page-layout {
         grid-template-columns: 1fr;
-
         width: 94%;
-
         gap: 15px;
       }
 
       .sidebar {
         position: static;
-
         padding: 12px;
-
         overflow: hidden;
       }
 
@@ -419,19 +402,14 @@
 
       .category-list {
         flex-direction: row;
-
         overflow-x: auto;
-
         padding-bottom: 5px;
-
         scrollbar-width: thin;
       }
 
       .category-button {
         min-width: max-content;
-
         width: auto;
-
         padding: 7px 9px;
       }
 
@@ -446,10 +424,13 @@
       .content-box {
         padding: 18px;
       }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 500px) {
-
       nav {
         height: 62px;
       }
@@ -487,31 +468,16 @@
 
 <body>
 
-  <!-- =========================
-       NAVBAR
-  ========================= -->
-
   <nav>
-
-    <a href="index.html" class="logo">
-      ICEMAN
-    </a>
+    <a href="index.html" class="logo">ICEMAN</a>
 
     <div class="nav-links">
       <a href="index.html">🏠 الرئيسية</a>
       <a href="index.html">🧭 المجالات</a>
     </div>
-
   </nav>
 
-
-  <!-- =========================
-       PAGE
-  ========================= -->
-
   <div class="page-layout">
-
-    <!-- SIDEBAR -->
 
     <aside class="sidebar">
 
@@ -521,115 +487,81 @@
 
       <div class="category-list">
 
-        <button
-          class="category-button active"
+        <button class="category-button active"
+          data-filter="all"
           data-icon="🎬"
           data-title="مواقع الفيديو"
-          data-description="مواقع ومنصات لمشاهدة ومشاركة محتوى الفيديو"
-        >
+          data-description="مواقع ومنصات لمشاهدة ومشاركة محتوى الفيديو">
           <span class="category-icon">🎬</span>
-          <span class="category-name">
-            مواقع الفيديو
-          </span>
+          <span class="category-name">مواقع الفيديو</span>
         </button>
 
-
-        <button
-          class="category-button"
+        <button class="category-button"
+          data-filter="تحرير"
           data-icon="✂️"
           data-title="تحرير الفيديو"
-          data-description="أدوات وبرامج ومواقع لتحرير وتعديل الفيديو"
-        >
+          data-description="أدوات وبرامج ومواقع لتحرير وتعديل الفيديو">
           <span class="category-icon">✂️</span>
-          <span class="category-name">
-            تحرير الفيديو
-          </span>
+          <span class="category-name">تحرير الفيديو</span>
         </button>
 
-
-        <button
-          class="category-button"
+        <button class="category-button"
+          data-filter="تحسين"
           data-icon="✨"
           data-title="تحسين الفيديو"
-          data-description="أدوات لتحسين جودة الفيديو ومعالجة المشكلات"
-        >
+          data-description="أدوات لتحسين جودة الفيديو ومعالجة المشكلات">
           <span class="category-icon">✨</span>
-          <span class="category-name">
-            تحسين الفيديو
-          </span>
+          <span class="category-name">تحسين الفيديو</span>
         </button>
 
-
-        <button
-          class="category-button"
+        <button class="category-button"
+          data-filter="AI"
           data-icon="🤖"
           data-title="الذكاء الاصطناعي للفيديو"
-          data-description="أدوات الذكاء الاصطناعي لإنشاء وتعديل وتحسين الفيديو"
-        >
+          data-description="أدوات الذكاء الاصطناعي لإنشاء وتعديل وتحسين الفيديو">
           <span class="category-icon">🤖</span>
-          <span class="category-name">
-            AI للفيديو
-          </span>
+          <span class="category-name">AI للفيديو</span>
         </button>
 
-
-        <button
-          class="category-button"
+        <button class="category-button"
+          data-filter="تحويل"
           data-icon="🎞️"
           data-title="تحويل وصيغ الفيديو"
-          data-description="أدوات تحويل الفيديو بين الصيغ والأحجام المختلفة"
-        >
+          data-description="أدوات تحويل الفيديو بين الصيغ والأحجام المختلفة">
           <span class="category-icon">🎞️</span>
-          <span class="category-name">
-            تحويل الفيديو
-          </span>
+          <span class="category-name">تحويل الفيديو</span>
         </button>
 
-
-        <button
-          class="category-button"
+        <button class="category-button"
+          data-filter="تحميل"
           data-icon="⬇️"
           data-title="تحميل الفيديو"
-          data-description="أدوات ومواقع لإدارة وتنزيل المحتوى المسموح بتنزيله"
-        >
+          data-description="أدوات ومواقع لإدارة وتنزيل المحتوى المسموح بتنزيله">
           <span class="category-icon">⬇️</span>
-          <span class="category-name">
-            تحميل الفيديو
-          </span>
+          <span class="category-name">تحميل الفيديو</span>
         </button>
 
-
-        <button
-          class="category-button"
+        <button class="category-button"
+          data-filter="بث"
           data-icon="📺"
           data-title="البث المباشر"
-          data-description="منصات وأدوات للبث المباشر وصناعة المحتوى"
-        >
+          data-description="منصات وأدوات للبث المباشر وصناعة المحتوى">
           <span class="category-icon">📺</span>
-          <span class="category-name">
-            البث المباشر
-          </span>
+          <span class="category-name">البث المباشر</span>
         </button>
 
-
-        <button
-          class="category-button"
+        <button class="category-button"
+          data-filter="تعلم"
           data-icon="🎓"
           data-title="تعلم صناعة الفيديو"
-          data-description="كورسات ومصادر لتعلم تصوير وتحرير وصناعة الفيديو"
-        >
+          data-description="كورسات ومصادر لتعلم تصوير وتحرير وصناعة الفيديو">
           <span class="category-icon">🎓</span>
-          <span class="category-name">
-            تعلم صناعة الفيديو
-          </span>
+          <span class="category-name">تعلم صناعة الفيديو</span>
         </button>
 
       </div>
 
     </aside>
-
-
-    <!-- MAIN -->
 
     <main class="main-content">
 
@@ -639,9 +571,7 @@
           ✦ مجال الفيديو
         </span>
 
-        <h1>
-          الفيديو
-        </h1>
+        <h1>الفيديو</h1>
 
         <p>
           اكتشف مواقع وأدوات لتحرير الفيديو وتحسينه وتحويل صِيَغه،
@@ -650,20 +580,15 @@
 
       </section>
 
-
       <section class="content-box">
 
         <div class="content-header">
 
-          <div
-            class="content-icon"
-            id="contentIcon"
-          >
+          <div class="content-icon" id="contentIcon">
             🎬
           </div>
 
           <div>
-
             <h2 id="contentTitle">
               مواقع الفيديو
             </h2>
@@ -671,26 +596,19 @@
             <p id="contentDescription">
               مواقع ومنصات لمشاهدة ومشاركة محتوى الفيديو
             </p>
-
           </div>
 
         </div>
 
+        <div id="toolsContainer">
 
-        <div class="empty-content">
-
-          <div class="empty-icon">
-            🎥
+          <div class="loading">
+            <div class="loading-icon">⏳</div>
+            <h3>جاري تحميل أدوات الفيديو...</h3>
+            <p>
+              يتم الآن تحميل المحتوى من قاعدة بيانات ICEMAN.
+            </p>
           </div>
-
-          <h3>
-            المحتوى قادم قريبًا
-          </h3>
-
-          <p>
-            سيتم إضافة مواقع وأدوات تحرير وتحسين وتحويل الفيديو
-            ومنصات البث ومصادر التعلم بعد تجهيز قاعدة بيانات ICEMAN.
-          </p>
 
         </div>
 
@@ -700,20 +618,11 @@
 
   </div>
 
-
-  <!-- =========================
-       FOOTER
-  ========================= -->
-
   <footer>
 
-    <div>
-      © 2026 ICEMAN
-    </div>
+    <div>© 2026 ICEMAN</div>
 
-    <div>
-      تم التطوير بواسطة
-    </div>
+    <div>تم التطوير بواسطة</div>
 
     <span class="developer-name">
       ✦ المهندس محمد إبراهيم محمد أحمد عامر ✦
@@ -725,10 +634,10 @@
 
   </footer>
 
+  <!-- Supabase -->
 
-  <!-- =========================
-       JAVASCRIPT
-  ========================= -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
 
   <script>
 
@@ -744,6 +653,10 @@
     const contentDescription =
       document.getElementById("contentDescription");
 
+    const toolsContainer =
+      document.getElementById("toolsContainer");
+
+    let allVideoTools = [];
 
     categoryButtons.forEach((button) => {
 
@@ -755,29 +668,238 @@
 
         button.classList.add("active");
 
-
-        const title =
-          button.dataset.title;
-
-        const icon =
+        contentIcon.textContent =
           button.dataset.icon;
 
-        const description =
-          button.dataset.description;
-
-
-        contentIcon.textContent = icon;
-
-        contentTitle.textContent = title;
+        contentTitle.textContent =
+          button.dataset.title;
 
         contentDescription.textContent =
-          description;
+          button.dataset.description;
+
+        renderTools(button.dataset.filter);
 
       });
 
     });
 
+
+    async function loadVideoTools() {
+
+      toolsContainer.innerHTML = `
+        <div class="loading">
+          <div class="loading-icon">⏳</div>
+          <h3>جاري تحميل أدوات الفيديو...</h3>
+          <p>
+            يتم الآن تحميل المحتوى من قاعدة بيانات ICEMAN.
+          </p>
+        </div>
+      `;
+
+      const { data, error } =
+        await supabaseClient
+          .from("tools")
+          .select("*")
+          .eq("category", "فيديو")
+          .order("created_at", {
+            ascending: false
+          });
+
+
+      if (error) {
+
+        console.error(
+          "خطأ في تحميل أدوات الفيديو:",
+          error
+        );
+
+        toolsContainer.innerHTML = `
+          <div class="error-content">
+            <div class="empty-icon">⚠️</div>
+
+            <h3>
+              حدث خطأ أثناء تحميل الأدوات
+            </h3>
+
+            <p>
+              لم نتمكن من تحميل أدوات الفيديو حاليًا.
+            </p>
+
+            <button
+              class="retry-button"
+              onclick="loadVideoTools()"
+            >
+              إعادة المحاولة
+            </button>
+          </div>
+        `;
+
+        return;
+      }
+
+      allVideoTools = data || [];
+
+      renderTools("all");
+
+    }
+
+
+    function renderTools(filter) {
+
+      let tools = [...allVideoTools];
+
+      if (filter !== "all") {
+
+        tools = tools.filter((tool) => {
+
+          const searchableText = `
+            ${tool.name || ""}
+            ${tool.description || ""}
+            ${tool.type || ""}
+          `.toLowerCase();
+
+          return searchableText.includes(
+            filter.toLowerCase()
+          );
+
+        });
+
+      }
+
+
+      if (tools.length === 0) {
+
+        toolsContainer.innerHTML = `
+          <div class="empty-content">
+
+            <div class="empty-icon">
+              🎬
+            </div>
+
+            <h3>
+              لا توجد أدوات هنا حاليًا
+            </h3>
+
+            <p>
+              سيتم ظهور مواقع وأدوات الفيديو التي تضيفها
+              من لوحة الإدارة تلقائيًا.
+            </p>
+
+          </div>
+        `;
+
+        return;
+      }
+
+
+      toolsContainer.innerHTML = `
+        <div class="tools-grid">
+
+          ${tools.map((tool) => {
+
+            const safeUrl =
+              isSafeUrl(tool.url)
+                ? tool.url
+                : "#";
+
+            return `
+              <article class="tool-card">
+
+                <div class="tool-icon">
+                  🎬
+                </div>
+
+                <h3>
+                  ${escapeHTML(
+                    tool.name || "بدون اسم"
+                  )}
+                </h3>
+
+                <p>
+                  ${escapeHTML(
+                    tool.description ||
+                    "لا يوجد وصف."
+                  )}
+                </p>
+
+                <div class="tool-tags">
+
+                  <span class="tool-tag green">
+                    ${escapeHTML(
+                      tool.type || "موقع"
+                    )}
+                  </span>
+
+                  <span class="tool-tag">
+                    ${escapeHTML(
+                      tool.price || "مجاني"
+                    )}
+                  </span>
+
+                </div>
+
+                <a
+                  class="open-tool"
+                  href="${escapeAttribute(safeUrl)}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  🎬 فتح الموقع
+                </a>
+
+              </article>
+            `;
+
+          }).join("")}
+
+        </div>
+      `;
+
+    }
+
+
+    function isSafeUrl(url) {
+
+      try {
+
+        const parsed =
+          new URL(url);
+
+        return (
+          parsed.protocol === "https:" ||
+          parsed.protocol === "http:"
+        );
+
+      } catch {
+
+        return false;
+
+      }
+
+    }
+
+
+    function escapeHTML(value) {
+
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+    function escapeAttribute(value) {
+      return escapeHTML(value);
+    }
+
+
+    loadVideoTools();
+
   </script>
 
 </body>
 </html>
+```

@@ -466,7 +466,21 @@ function searchTools() {
 
   showingFavorites = false;
 
+  /* عرض نتائج البحث */
   displayTools(filtered);
+
+  /*
+    النزول تلقائياً إلى النتائج
+    بعد تحديث النتائج
+  */
+  requestAnimationFrame(() => {
+    if (results) {
+      results.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  });
 }
 
 if (searchButton) {
@@ -502,6 +516,7 @@ document
   .forEach((card) => {
 
     card.addEventListener("click", () => {
+
       selectedCategory = card.dataset.category;
 
       showingFavorites = false;
@@ -511,7 +526,22 @@ document
           tool.category === selectedCategory
       );
 
+      /* عرض النتائج */
       displayTools(filtered);
+
+      /*
+        النزول تلقائياً إلى النتائج
+        بعد تحديث النتائج
+      */
+      requestAnimationFrame(() => {
+        if (results) {
+          results.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      });
+
     });
 
   });

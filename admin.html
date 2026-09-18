@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>ICEMAN | لوحة الإدارة</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Tahoma, sans-serif;
+      background: #f7fff9;
+      color: #123524;
+      min-height: 100vh;
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid #e5f2e9;
+      padding: 16px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      color: #16a34a;
+      font-size: 23px;
+      font-weight: 900;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    .logout-btn {
+      border: none;
+      background: #fee2e2;
+      color: #dc2626;
+      padding: 11px 17px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .logout-btn:hover {
+      background: #fecaca;
+    }
+
+    main {
+      width: min(1100px, 92%);
+      margin: auto;
+      padding: 45px 0 70px;
+    }
+
+    .login-box,
+    .dashboard {
+      background: white;
+      border: 1px solid #e1f0e6;
+      border-radius: 25px;
+      padding: 30px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+    }
+
+    .login-box {
+      width: min(480px, 100%);
+      margin: 60px auto;
+    }
+
+    h1 {
+      color: #16a34a;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #64748b;
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 12px;
+      border: 1px solid #dceee2;
+      border-radius: 14px;
+      outline: none;
+      font-size: 15px;
+      background: white;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #16a34a;
+    }
+
+    .primary-btn {
+      width: 100%;
+      border: none;
+      background: #16a34a;
+      color: white;
+      padding: 14px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .primary-btn:hover {
+      background: #15803d;
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    .dashboard {
+      display: none;
+    }
+
+    .dashboard-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .admin-badge {
+      background: #ecfdf3;
+      color: #15803d;
+      padding: 9px 14px;
+      border-radius: 20px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .add-box {
+      background: #f7fff9;
+      border: 1px solid #dceee2;
+      border-radius: 20px;
+      padding: 22px;
+      margin-bottom: 30px;
+    }
+
+    .tools-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .tool-card {
+      border: 1px solid #e1f0e6;
+      border-radius: 18px;
+      padding: 18px;
+      background: white;
+    }
+
+    .tool-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .tool-card p {
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      background: #ecfdf3;
+      color: #15803d;
+      padding: 5px 8px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .delete-btn {
+      width: 100%;
+      border: none;
+      background: #fee2e2;
+      color: #dc2626;
+      padding: 10px;
+      border-radius: 11px;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .delete-btn:hover {
+      background: #fecaca;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 30px;
+      color: #64748b;
+      background: #f8fafc;
+      border-radius: 15px;
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 850px) {
+
+      .tools-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dashboard-top {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .admin-badge {
+        text-align: center;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      header {
+        padding: 13px 15px;
+      }
+
+      main {
+        width: 94%;
+        padding-top: 25px;
+      }
+
+      .login-box,
+      .dashboard {
+        padding: 20px;
+        border-radius: 20px;
+      }
+
+      .tools-list {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+
+    <a href="index.html" class="logo">
+      ICEMAN
+    </a>
+
+    <button
+      id="logoutButton"
+      class="logout-btn"
+      style="display:none;"
+    >
+      🚪 تسجيل الخروج
+    </button>
+
+  </header>
+
+
+  <main>
+
+    <!-- تسجيل الدخول -->
+
+    <section
+      id="loginBox"
+      class="login-box"
+    >
+
+      <h1>
+        👑 ICEMAN
+      </h1>
+
+      <h2>
+        لوحة الإدارة
+      </h2>
+
+      <p class="subtitle">
+        سجّل الدخول للوصول إلى أدوات إدارة المحتوى.
+      </p>
+
+      <input
+        id="adminEmail"
+        type="email"
+        placeholder="البريد الإلكتروني"
+        autocomplete="email"
+      >
+
+      <input
+        id="adminPassword"
+        type="password"
+        placeholder="كلمة المرور"
+        autocomplete="current-password"
+      >
+
+      <button
+        id="adminLoginSubmit"
+        class="primary-btn"
+      >
+        دخول الإدارة
+      </button>
+
+      <div
+        id="adminMessage"
+        class="message"
+      ></div>
+
+    </section>
+
+
+    <!-- لوحة التحكم -->
+
+    <section
+      id="dashboard"
+      class="dashboard"
+    >
+
+      <div class="dashboard-top">
+
+        <div>
+          <h1>
+            👑 لوحة التحكم
+          </h1>
+
+          <p class="subtitle">
+            إدارة محتوى ICEMAN من مكان واحد.
+          </p>
+        </div>
+
+        <div class="admin-badge">
+          مدير النظام
+        </div>
+
+      </div>
+
+
+      <!-- إضافة أداة -->
+
+      <div class="add-box">
+
+        <h2>
+          ＋ إضافة محتوى جديد
+        </h2>
+
+        <p class="subtitle">
+          أضف موقعًا أو تطبيقًا أو أداة أو فيديو.
+        </p>
+
+        <input
+          id="toolName"
+          type="text"
+          placeholder="اسم الأداة أو التطبيق أو الفيديو"
+        >
+
+        <input
+          id="toolDescription"
+          type="text"
+          placeholder="وصف المحتوى"
+        >
+
+        <select id="toolCategory">
+
+          <option value="">
+            اختر التصنيف
+          </option>
+
+          <option value="AI">
+            🤖 الذكاء الاصطناعي
+          </option>
+
+          <option value="برمجة">
+            💻 برمجة
+          </option>
+
+          <option value="Cybersecurity">
+            🔐 الأمن السيبراني
+          </option>
+
+          <option value="تعليم">
+            🎓 تعليم
+          </option>
+
+          <option value="تصميم">
+            🎨 تصميم
+          </option>
+
+          <option value="فيديو">
+            🎬 فيديو
+          </option>
+
+          <option value="أدوات">
+            🛠️ أدوات
+          </option>
+
+          <option value="تطبيقات">
+            📱 تطبيقات
+          </option>
+
+        </select>
+
+
+        <select id="toolType">
+
+          <option value="">
+            اختر النوع
+          </option>
+
+          <option value="موقع">
+            🌐 موقع
+          </option>
+
+          <option value="تطبيق">
+            📱 تطبيق
+          </option>
+
+          <option value="أداة">
+            🛠️ أداة
+          </option>
+
+          <option value="فيديو">
+            🎬 فيديو
+          </option>
+
+        </select>
+
+
+        <input
+          id="toolUrl"
+          type="url"
+          placeholder="https://example.com"
+        >
+
+
+        <button
+          id="saveTool"
+          class="primary-btn"
+        >
+          حفظ وإضافة
+        </button>
+
+      </div>
+
+
+      <!-- الأدوات الموجودة -->
+
+      <h2>
+        🧰 المحتوى الحالي
+      </h2>
+
+      <br>
+
+      <div
+        id="toolsList"
+        class="tools-list"
+      ></div>
+
+    </section>
+
+  </main>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="supabase.js"></script>
+
+  <script src="admin.js"></script>
+
+</body>
+
+</html>

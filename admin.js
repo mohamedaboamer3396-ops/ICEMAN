@@ -1,55 +1,86 @@
-const adminLoginButton = document.getElementById("adminLoginButton");
-const adminModal = document.getElementById("adminModal");
-const closeAdminModal = document.getElementById("closeAdminModal");
-
 const adminEmail = document.getElementById("adminEmail");
 const adminPassword = document.getElementById("adminPassword");
 const adminLoginSubmit = document.getElementById("adminLoginSubmit");
 const adminMessage = document.getElementById("adminMessage");
 
-const adminPanelButton = document.getElementById("adminPanelButton");
-const adminLogoutButton = document.getElementById("adminLogoutButton");
+const loginBox = document.getElementById("loginBox");
+const dashboard = document.getElementById("dashboard");
+const logoutButton = document.getElementById("logoutButton");
+
+const toolName = document.getElementById("toolName");
+const toolDescription = document.getElementById("toolDescription");
+const toolCategory = document.getElementById("toolCategory");
+const toolType = document.getElementById("toolType");
+const toolUrl = document.getElementById("toolUrl");
+const saveTool = document.getElementById("saveTool");
+
+const toolsList = document.getElementById("toolsList");
+
+
+/* =========================
+   حالة الإدارة
+========================= */
 
 window.icemanIsAdmin = false;
 
 
 /* =========================
-   تحديث واجهة الإدارة
+   رسالة الإدارة
 ========================= */
 
-function updateAdminUI() {
-  window.dispatchEvent(
-    new Event("iceman-admin-state")
-  );
+function showMessage(message, color = "#dc2626") {
+
+  if (!adminMessage) return;
+
+  adminMessage.textContent = message;
+  adminMessage.style.color = color;
 }
 
 
 /* =========================
-   إخفاء الإدارة
+   إظهار لوحة التحكم
 ========================= */
 
-function hideAdminUI() {
+function showDashboard() {
+
+  window.icemanIsAdmin = true;
+
+  if (loginBox) {
+    loginBox.style.display = "none";
+  }
+
+  if (dashboard) {
+    dashboard.style.display = "block";
+  }
+
+  if (logoutButton) {
+    logoutButton.style.display = "block";
+  }
+
+  loadAdminTools();
+}
+
+
+/* =========================
+   إخفاء لوحة التحكم
+========================= */
+
+function hideDashboard() {
+
   window.icemanIsAdmin = false;
 
-  const addButton = document.getElementById("openAddTool");
-
-  if (addButton) {
-    addButton.style.display = "none";
+  if (loginBox) {
+    loginBox.style.display = "block";
   }
 
-  if (adminLoginButton) {
-    adminLoginButton.style.display = "block";
+  if (dashboard) {
+    dashboard.style.display = "none";
   }
 
-  if (adminPanelButton) {
-    adminPanelButton.style.display = "none";
+  if (logoutButton) {
+    logoutButton.style.display = "none";
   }
 
-  if (adminLogoutButton) {
-    adminLogoutButton.style.display = "none";
-  }
-
-  updateAdminUI();
 }
 
 
@@ -57,194 +88,90 @@ function hideAdminUI() {
    تسجيل الدخول
 ========================= */
 
-adminLoginButton.addEventListener("click", () => {
-  adminModal.classList.add("active");
+if (adminLoginSubmit) {
 
-  if (adminMessage) {
-    adminMessage.textContent = "";
-  }
-
-  adminEmail.focus();
-});
-
-
-/* =========================
-   إغلاق نافذة الإدارة
-========================= */
-
-closeAdminModal.addEventListener("click", () => {
-  adminModal.classList.remove("active");
-});
-
-
-adminModal.addEventListener("click", (event) => {
-  if (event.target === adminModal) {
-    adminModal.classList.remove("active");
-  }
-});
-
-
-/* =========================
-   دخول المدير
-========================= */
-
-adminLoginSubmit.addEventListener("click", async () => {
-
-  const email = adminEmail.value.trim();
-  const password = adminPassword.value;
-
-  if (!email || !password) {
-    adminMessage.textContent =
-      "اكتب البريد الإلكتروني وكلمة المرور.";
-
-    adminMessage.style.color = "#dc2626";
-
-    return;
-  }
-
-  adminLoginSubmit.disabled = true;
-  adminLoginSubmit.textContent = "جاري الدخول...";
-
-  adminMessage.textContent = "";
-
-  const { error } =
-    await supabaseClient.auth.signInWithPassword({
-      email: email,
-      password: password
-    });
-
-  if (error) {
-
-    adminMessage.textContent =
-      "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
-
-    adminMessage.style.color = "#dc2626";
-
-    adminLoginSubmit.disabled = false;
-    adminLoginSubmit.textContent = "دخول الإدارة";
-
-    return;
-  }
-
-
-  /* =========================
-     التأكد أن الحساب مدير
-  ========================= */
-
-  const {
-    data: isAdmin,
-    error: adminError
-  } = await supabaseClient.rpc("is_admin");
-
-
-  if (adminError || !isAdmin) {
-
-    await supabaseClient.auth.signOut();
-
-    hideAdminUI();
-
-    adminMessage.textContent =
-      "هذا الحساب ليس لديه صلاحيات الإدارة.";
-
-    adminMessage.style.color = "#dc2626";
-
-    adminLoginSubmit.disabled = false;
-    adminLoginSubmit.textContent = "دخول الإدارة";
-
-    return;
-  }
-
-
-  /* =========================
-     نجاح الدخول
-  ========================= */
-
-  window.icemanIsAdmin = true;
-
-  if (adminLoginButton) {
-    adminLoginButton.style.display = "none";
-  }
-
-  if (adminPanelButton) {
-    adminPanelButton.style.display = "block";
-  }
-
-  if (adminLogoutButton) {
-    adminLogoutButton.style.display = "block";
-  }
-
-  const addButton =
-    document.getElementById("openAddTool");
-
-  if (addButton) {
-    addButton.style.display = "block";
-  }
-
-  updateAdminUI();
-
-  adminMessage.textContent =
-    "تم تسجيل الدخول بنجاح 👑";
-
-  adminMessage.style.color = "#16a34a";
-
-  adminLoginSubmit.disabled = false;
-  adminLoginSubmit.textContent = "دخول الإدارة";
-
-  setTimeout(() => {
-    adminModal.classList.remove("active");
-  }, 700);
-});
-
-
-/* =========================
-   لوحة الإدارة
-========================= */
-
-adminPanelButton.addEventListener("click", () => {
-
-  if (window.icemanIsAdmin !== true) {
-    return;
-  }
-
-  const addButton =
-    document.getElementById("openAddTool");
-
-  if (addButton) {
-
-    addButton.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
-
-    setTimeout(() => {
-      addButton.click();
-    }, 500);
-  }
-});
-
-
-/* =========================
-   خروج الإدارة
-========================= */
-
-if (adminLogoutButton) {
-
-  adminLogoutButton.addEventListener(
+  adminLoginSubmit.addEventListener(
     "click",
     async () => {
 
-      const confirmed =
-        confirm("هل تريد تسجيل الخروج من الإدارة؟");
+      const email = adminEmail.value.trim();
+      const password = adminPassword.value;
 
-      if (!confirmed) {
+      if (!email || !password) {
+
+        showMessage(
+          "اكتب البريد الإلكتروني وكلمة المرور."
+        );
+
         return;
       }
 
-      await supabaseClient.auth.signOut();
 
-      hideAdminUI();
+      adminLoginSubmit.disabled = true;
+      adminLoginSubmit.textContent = "جاري الدخول...";
 
-      alert("تم تسجيل الخروج من الإدارة 🚪");
+      showMessage("", "#16a34a");
+
+
+      const { error } =
+        await supabaseClient.auth.signInWithPassword({
+          email: email,
+          password: password
+        });
+
+
+      if (error) {
+
+        showMessage(
+          "البريد الإلكتروني أو كلمة المرور غير صحيحة."
+        );
+
+        adminLoginSubmit.disabled = false;
+        adminLoginSubmit.textContent = "دخول الإدارة";
+
+        return;
+      }
+
+
+      /* =========================
+         التأكد أن الحساب مدير
+      ========================= */
+
+      const {
+        data: isAdmin,
+        error: adminError
+      } = await supabaseClient.rpc("is_admin");
+
+
+      if (adminError || !isAdmin) {
+
+        await supabaseClient.auth.signOut();
+
+        showMessage(
+          "هذا الحساب ليس لديه صلاحيات الإدارة."
+        );
+
+        adminLoginSubmit.disabled = false;
+        adminLoginSubmit.textContent = "دخول الإدارة";
+
+        return;
+      }
+
+
+      /* =========================
+         نجاح الدخول
+      ========================= */
+
+      showMessage(
+        "تم تسجيل الدخول بنجاح 👑",
+        "#16a34a"
+      );
+
+      adminLoginSubmit.disabled = false;
+      adminLoginSubmit.textContent = "دخول الإدارة";
+
+      showDashboard();
+
     }
   );
 
@@ -252,22 +179,449 @@ if (adminLogoutButton) {
 
 
 /* =========================
-   مهم جدًا:
-   عند فتح الموقع لا ندخل الإدارة تلقائيًا
+   تحميل الأدوات
 ========================= */
 
-async function startICEMAN() {
+async function loadAdminTools() {
 
-  // حذف أي تسجيل دخول محفوظ
-  await supabaseClient.auth.signOut();
+  if (!toolsList) return;
 
-  // فتح الموقع كمستخدم عادي
-  hideAdminUI();
+
+  toolsList.innerHTML = `
+    <div class="empty">
+      جاري تحميل المحتوى...
+    </div>
+  `;
+
+
+  const {
+    data,
+    error
+  } = await supabaseClient
+    .from("tools")
+    .select("*")
+    .order("created_at", {
+      ascending: false
+    });
+
+
+  if (error) {
+
+    console.error(
+      "خطأ في تحميل الأدوات:",
+      error
+    );
+
+    toolsList.innerHTML = `
+      <div class="empty">
+        حصل خطأ أثناء تحميل المحتوى.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  renderAdminTools(data || []);
+
 }
 
 
 /* =========================
-   تشغيل الموقع
+   عرض الأدوات
 ========================= */
 
-startICEMAN();
+function renderAdminTools(tools) {
+
+  if (!toolsList) return;
+
+
+  if (!tools || tools.length === 0) {
+
+    toolsList.innerHTML = `
+      <div class="empty">
+        لا توجد أدوات حالياً.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  toolsList.innerHTML = tools.map((tool) => {
+
+    return `
+      <article class="tool-card">
+
+        <h3>
+          ${escapeHTML(tool.name || "")}
+        </h3>
+
+        <p>
+          ${escapeHTML(tool.description || "")}
+        </p>
+
+        <div class="tags">
+
+          <span class="tag">
+            ${escapeHTML(tool.category || "")}
+          </span>
+
+          <span class="tag">
+            ${escapeHTML(tool.type || "")}
+          </span>
+
+          <span class="tag">
+            ${escapeHTML(tool.price || "مجاني")}
+          </span>
+
+        </div>
+
+        <a
+          href="${escapeAttribute(tool.url || "#")}"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="
+            display:block;
+            text-align:center;
+            text-decoration:none;
+            background:#ecfdf3;
+            color:#15803d;
+            padding:10px;
+            border-radius:11px;
+            font-weight:800;
+            margin-bottom:8px;
+          "
+        >
+          🌐 فتح المحتوى
+        </a>
+
+        <button
+          class="delete-btn"
+          onclick="deleteAdminTool(${tool.id})"
+        >
+          🗑️ حذف المحتوى
+        </button>
+
+      </article>
+    `;
+
+  }).join("");
+
+}
+
+
+/* =========================
+   إضافة أداة
+========================= */
+
+if (saveTool) {
+
+  saveTool.addEventListener(
+    "click",
+    async () => {
+
+      if (window.icemanIsAdmin !== true) {
+
+        alert(
+          "ليس لديك صلاحية لإضافة المحتوى."
+        );
+
+        return;
+      }
+
+
+      const name =
+        toolName.value.trim();
+
+      const description =
+        toolDescription.value.trim();
+
+      const category =
+        toolCategory.value;
+
+      const type =
+        toolType.value;
+
+      const url =
+        toolUrl.value.trim();
+
+
+      if (
+        !name ||
+        !description ||
+        !category ||
+        !type ||
+        !url
+      ) {
+
+        alert(
+          "من فضلك املأ كل البيانات."
+        );
+
+        return;
+      }
+
+
+      try {
+
+        new URL(url);
+
+      } catch {
+
+        alert(
+          "الرابط غير صحيح."
+        );
+
+        return;
+      }
+
+
+      saveTool.disabled = true;
+      saveTool.textContent = "جاري الحفظ...";
+
+
+      const {
+        data,
+        error
+      } = await supabaseClient
+        .from("tools")
+        .insert([
+          {
+            name: name,
+            description: description,
+            category: category,
+            type: type,
+            price: "مجاني",
+            url: url
+          }
+        ])
+        .select()
+        .single();
+
+
+      saveTool.disabled = false;
+      saveTool.textContent = "حفظ وإضافة";
+
+
+      if (error) {
+
+        console.error(
+          "خطأ في إضافة المحتوى:",
+          error
+        );
+
+        alert(
+          "حصل خطأ أثناء إضافة المحتوى."
+        );
+
+        return;
+      }
+
+
+      toolName.value = "";
+      toolDescription.value = "";
+      toolCategory.value = "";
+      toolType.value = "";
+      toolUrl.value = "";
+
+
+      await loadAdminTools();
+
+
+      alert(
+        "تمت إضافة المحتوى بنجاح ✅"
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================
+   حذف أداة
+========================= */
+
+async function deleteAdminTool(id) {
+
+  if (window.icemanIsAdmin !== true) {
+
+    alert(
+      "ليس لديك صلاحية الحذف."
+    );
+
+    return;
+  }
+
+
+  const confirmed =
+    confirm(
+      "هل أنت متأكد من حذف هذا المحتوى؟"
+    );
+
+
+  if (!confirmed) {
+    return;
+  }
+
+
+  const {
+    error
+  } = await supabaseClient
+    .from("tools")
+    .delete()
+    .eq("id", id);
+
+
+  if (error) {
+
+    console.error(
+      "خطأ في حذف المحتوى:",
+      error
+    );
+
+    alert(
+      "لم يتم حذف المحتوى."
+    );
+
+    return;
+  }
+
+
+  await loadAdminTools();
+
+
+  alert(
+    "تم حذف المحتوى بنجاح 🗑️"
+  );
+
+}
+
+
+window.deleteAdminTool = deleteAdminTool;
+
+
+/* =========================
+   تسجيل الخروج
+========================= */
+
+if (logoutButton) {
+
+  logoutButton.addEventListener(
+    "click",
+    async () => {
+
+      const confirmed =
+        confirm(
+          "هل تريد تسجيل الخروج من لوحة الإدارة؟"
+        );
+
+
+      if (!confirmed) {
+        return;
+      }
+
+
+      await supabaseClient.auth.signOut();
+
+
+      hideDashboard();
+
+
+      adminEmail.value = "";
+      adminPassword.value = "";
+
+
+      showMessage(
+        "تم تسجيل الخروج من الإدارة 🚪",
+        "#16a34a"
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================
+   حماية الصفحة عند الفتح
+========================= */
+
+async function startAdmin() {
+
+  /*
+    نتحقق من الجلسة الحالية.
+    لا نسمح بالدخول إلا للحساب المدير.
+  */
+
+  const {
+    data: {
+      session
+    }
+  } = await supabaseClient.auth.getSession();
+
+
+  if (!session) {
+
+    hideDashboard();
+
+    return;
+  }
+
+
+  const {
+    data: isAdmin,
+    error
+  } = await supabaseClient.rpc(
+    "is_admin"
+  );
+
+
+  if (error || !isAdmin) {
+
+    await supabaseClient.auth.signOut();
+
+    hideDashboard();
+
+    showMessage(
+      "هذا الحساب ليس لديه صلاحيات الإدارة."
+    );
+
+    return;
+  }
+
+
+  showDashboard();
+
+}
+
+
+/* =========================
+   حماية النصوص
+========================= */
+
+function escapeHTML(value) {
+
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+function escapeAttribute(value) {
+
+  return escapeHTML(value);
+
+}
+
+
+/* =========================
+   تشغيل لوحة الإدارة
+========================= */
+
+startAdmin();

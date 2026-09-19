@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>التعليم | ICEMAN</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Tahoma, sans-serif;
+      background: #f8faf9;
+      color: #111827;
+      min-height: 100vh;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    nav {
+      height: 70px;
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 35px;
+
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      text-decoration: none;
+      color: #111827;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #374151;
+
+      padding: 10px 15px;
+      border-radius: 10px;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      background: #ecfdf5;
+      color: #059669;
+    }
+
+    /* =========================
+       PAGE LAYOUT
+    ========================= */
+
+    .page-layout {
+      width: min(1400px, 95%);
+      margin: 30px auto;
+
+      display: grid;
+      grid-template-columns: 220px 1fr;
+
+      gap: 25px;
+
+      direction: rtl;
+    }
+
+    /* =========================
+       SIDEBAR
+    ========================= */
+
+    .sidebar {
+      background: #ffffff;
+
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+
+      padding: 15px;
+
+      height: fit-content;
+
+      position: sticky;
+      top: 90px;
+    }
+
+    .sidebar-title {
+      font-size: 17px;
+      font-weight: 900;
+
+      margin-bottom: 15px;
+
+      color: #111827;
+    }
+
+    .category-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .category-button {
+      width: 100%;
+
+      border: none;
+      background: transparent;
+
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+
+      padding: 9px;
+
+      border-radius: 12px;
+
+      cursor: pointer;
+
+      text-align: right;
+
+      font-family: inherit;
+
+      transition: 0.2s;
+    }
+
+    .category-button:hover {
+      background: #f0fdf4;
+    }
+
+    .category-button.active {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .category-icon {
+      width: 36px;
+      height: 36px;
+
+      min-width: 36px;
+
+      border-radius: 50%;
+
+      background: #f0fdf4;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 17px;
+
+      border: 1px solid #bbf7d0;
+    }
+
+    .category-button.active .category-icon {
+      background: #22c55e;
+      border-color: #22c55e;
+    }
+
+    .category-name {
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    /* =========================
+       MAIN CONTENT
+    ========================= */
+
+    .main-content {
+      min-width: 0;
+    }
+
+    .hero {
+      background: #ffffff;
+
+      border: 1px solid #e5e7eb;
+      border-radius: 22px;
+
+      padding: 35px;
+
+      margin-bottom: 20px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+
+      background: #ecfdf5;
+      color: #047857;
+
+      border: 1px solid #a7f3d0;
+
+      padding: 7px 12px;
+
+      border-radius: 999px;
+
+      font-size: 13px;
+      font-weight: 800;
+
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 48px);
+
+      line-height: 1.1;
+
+      margin-bottom: 12px;
+
+      font-weight: 900;
+    }
+
+    .hero p {
+      color: #6b7280;
+
+      font-size: 15px;
+
+      line-height: 1.8;
+
+      max-width: 700px;
+    }
+
+    /* =========================
+       CONTENT BOX
+    ========================= */
+
+    .content-box {
+      background: #ffffff;
+
+      border: 1px solid #e5e7eb;
+
+      border-radius: 22px;
+
+      padding: 25px;
+    }
+
+    .content-header {
+      display: flex;
+      align-items: center;
+
+      gap: 15px;
+
+      padding-bottom: 20px;
+
+      border-bottom: 1px solid #e5e7eb;
+
+      margin-bottom: 20px;
+    }
+
+    .content-icon {
+      width: 52px;
+      height: 52px;
+
+      min-width: 52px;
+
+      border-radius: 15px;
+
+      background: #dcfce7;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 25px;
+    }
+
+    .content-header h2 {
+      font-size: 22px;
+
+      margin-bottom: 5px;
+
+      font-weight: 900;
+    }
+
+    .content-header p {
+      color: #6b7280;
+
+      font-size: 13px;
+    }
+
+    /* =========================
+       EMPTY CONTENT
+    ========================= */
+
+    .empty-content {
+      min-height: 300px;
+
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 30px;
+    }
+
+    .empty-icon {
+      font-size: 50px;
+
+      margin-bottom: 15px;
+    }
+
+    .empty-content h3 {
+      font-size: 20px;
+
+      margin-bottom: 8px;
+
+      font-weight: 900;
+    }
+
+    .empty-content p {
+      color: #6b7280;
+
+      font-size: 14px;
+
+      line-height: 1.8;
+
+      max-width: 500px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      text-align: center;
+
+      padding: 40px 20px;
+
+      margin-top: 50px;
+
+      color: #6b7280;
+
+      font-size: 13px;
+
+      line-height: 1.8;
+    }
+
+    .developer-name {
+      display: block;
+
+      color: #166534;
+
+      font-size: 15px;
+
+      font-weight: 900;
+
+      margin-top: 5px;
+    }
+
+    .partner-name {
+      display: block;
+
+      color: #451a03;
+
+      font-size: 15px;
+
+      font-weight: 900;
+
+      margin-top: 6px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 800px) {
+
+      nav {
+        padding: 0 15px;
+      }
+
+      .nav-links a {
+        padding: 8px 10px;
+        font-size: 13px;
+      }
+
+      .page-layout {
+        grid-template-columns: 1fr;
+
+        width: 94%;
+
+        gap: 15px;
+      }
+
+      .sidebar {
+        position: static;
+
+        padding: 12px;
+
+        overflow: hidden;
+      }
+
+      .sidebar-title {
+        margin-bottom: 10px;
+      }
+
+      .category-list {
+        flex-direction: row;
+
+        overflow-x: auto;
+
+        padding-bottom: 5px;
+
+        scrollbar-width: thin;
+      }
+
+      .category-button {
+        min-width: max-content;
+
+        width: auto;
+
+        padding: 7px 9px;
+      }
+
+      .category-name {
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 25px;
+      }
+
+      .content-box {
+        padding: 18px;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      nav {
+        height: 62px;
+      }
+
+      .logo {
+        font-size: 19px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+        padding: 7px 8px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero {
+        padding: 20px;
+      }
+
+      .content-header h2 {
+        font-size: 19px;
+      }
+
+      .content-icon {
+        width: 45px;
+        height: 45px;
+        min-width: 45px;
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVBAR
+  ========================= -->
+
+  <nav>
+
+    <a href="index.html" class="logo">
+      ICEMAN
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">🏠 الرئيسية</a>
+      <a href="index.html">🧭 المجالات</a>
+    </div>
+
+  </nav>
+
+
+  <!-- =========================
+       PAGE
+  ========================= -->
+
+  <div class="page-layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <div class="sidebar-title">
+        أقسام التعليم
+      </div>
+
+      <div class="category-list">
+
+        <button
+          class="category-button active"
+          data-icon="📚"
+          data-title="مواقع التعليم"
+          data-description="مواقع ومنصات تعليمية تساعدك على التعلم وتطوير مهاراتك"
+        >
+          <span class="category-icon">📚</span>
+          <span class="category-name">
+            مواقع التعليم
+          </span>
+        </button>
+
+
+        <button
+          class="category-button"
+          data-icon="🎓"
+          data-title="الكورسات"
+          data-description="دورات تعليمية في مختلف المجالات والمهارات"
+        >
+          <span class="category-icon">🎓</span>
+          <span class="category-name">
+            الكورسات
+          </span>
+        </button>
+
+
+        <button
+          class="category-button"
+          data-icon="🧑‍🏫"
+          data-title="المدرسين والمنصات"
+          data-description="منصات ومدرسون ومصادر تساعدك في الدراسة والتعلم"
+        >
+          <span class="category-icon">🧑‍🏫</span>
+          <span class="category-name">
+            المدرسين والمنصات
+          </span>
+        </button>
+
+
+        <button
+          class="category-button"
+          data-icon="📝"
+          data-title="المذاكرة والواجبات"
+          data-description="أدوات ومواقع تساعدك على المذاكرة وتنظيم الواجبات"
+        >
+          <span class="category-icon">📝</span>
+          <span class="category-name">
+            المذاكرة والواجبات
+          </span>
+        </button>
+
+
+        <button
+          class="category-button"
+          data-icon="🧠"
+          data-title="تعلم اللغات"
+          data-description="مصادر وتطبيقات ومواقع لتعلم اللغات وتطوير مهاراتك"
+        >
+          <span class="category-icon">🧠</span>
+          <span class="category-name">
+            تعلم اللغات
+          </span>
+        </button>
+
+
+        <button
+          class="category-button"
+          data-icon="💻"
+          data-title="البرمجة"
+          data-description="مصادر ودورات وأدوات تساعدك على تعلم البرمجة"
+        >
+          <span class="category-icon">💻</span>
+          <span class="category-name">
+            البرمجة
+          </span>
+        </button>
+
+
+        <button
+          class="category-button"
+          data-icon="📖"
+          data-title="الكتب والمراجع"
+          data-description="كتب ومراجع ومصادر تعليمية لمختلف المجالات"
+        >
+          <span class="category-icon">📖</span>
+          <span class="category-name">
+            الكتب والمراجع
+          </span>
+        </button>
+
+
+        <button
+          class="category-button"
+          data-icon="🎥"
+          data-title="الفيديوهات التعليمية"
+          data-description="فيديوهات وشروحات تعليمية تساعدك على فهم الدروس والمهارات"
+        >
+          <span class="category-icon">🎥</span>
+          <span class="category-name">
+            الفيديوهات التعليمية
+          </span>
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+      <section class="hero">
+
+        <span class="hero-badge">
+          ✦ مجال التعليم
+        </span>
+
+        <h1>
+          التعليم
+        </h1>
+
+        <p>
+          اكتشف أفضل المواقع والكورسات والأدوات والمصادر التعليمية
+          التي تساعدك على التعلم وتطوير مهاراتك بسهولة.
+        </p>
+
+      </section>
+
+
+      <section class="content-box">
+
+        <div class="content-header">
+
+          <div
+            class="content-icon"
+            id="contentIcon"
+          >
+            📚
+          </div>
+
+          <div>
+
+            <h2 id="contentTitle">
+              مواقع التعليم
+            </h2>
+
+            <p id="contentDescription">
+              مواقع ومنصات تعليمية تساعدك على التعلم وتطوير مهاراتك
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="empty-content">
+
+          <div class="empty-icon">
+            🎓
+          </div>
+
+          <h3>
+            المحتوى قادم قريبًا
+          </h3>
+
+          <p>
+            سيتم إضافة المواقع والكورسات والأدوات والمصادر
+            التعليمية الخاصة بهذا القسم بعد تجهيز قاعدة بيانات ICEMAN.
+          </p>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div>
+      © 2026 ICEMAN
+    </div>
+
+    <div>
+      تم التطوير بواسطة
+    </div>
+
+    <span class="developer-name">
+      ✦ المهندس محمد إبراهيم محمد أحمد عامر ✦
+    </span>
+
+    <span class="partner-name">
+      بالتعاون مع منصة Allef
+    </span>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    const categoryButtons =
+      document.querySelectorAll(".category-button");
+
+    const contentIcon =
+      document.getElementById("contentIcon");
+
+    const contentTitle =
+      document.getElementById("contentTitle");
+
+    const contentDescription =
+      document.getElementById("contentDescription");
+
+
+    categoryButtons.forEach((button) => {
+
+      button.addEventListener("click", () => {
+
+        categoryButtons.forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+
+        const title =
+          button.dataset.title;
+
+        const icon =
+          button.dataset.icon;
+
+        const description =
+          button.dataset.description;
+
+
+        contentIcon.textContent = icon;
+
+        contentTitle.textContent = title;
+
+        contentDescription.textContent =
+          description;
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>

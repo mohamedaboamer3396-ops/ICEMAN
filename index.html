@@ -1,0 +1,772 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ICEMAN | كل أدواتك ومواقعك في مكان واحد</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Tahoma, sans-serif;
+      background: #ffffff;
+      color: #111827;
+      min-height: 100vh;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      width: 100%;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+
+      border-bottom: 1px solid #e5e7eb;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 15px 6%;
+    }
+
+    .logo {
+      text-decoration: none;
+      color: #16a34a;
+
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #374151;
+
+      font-size: 15px;
+      font-weight: 700;
+
+      padding: 9px 14px;
+      border-radius: 10px;
+
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background: #ecfdf5;
+      color: #16a34a;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      text-align: center;
+      padding: 75px 20px 45px;
+    }
+
+    .badge {
+      display: inline-block;
+
+      background: #ecfdf5;
+      color: #15803d;
+
+      padding: 8px 15px;
+      border-radius: 999px;
+
+      font-size: 14px;
+      font-weight: 800;
+
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 78px);
+      font-weight: 900;
+
+      color: #16a34a;
+
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+
+      color: #64748b;
+
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    .search-box {
+      width: min(650px, 92%);
+      margin: 25px auto 0;
+
+      display: flex;
+      align-items: center;
+
+      background: #ffffff;
+
+      border: 1px solid #d1d5db;
+      border-radius: 15px;
+
+      padding: 5px;
+
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .search-box input {
+      flex: 1;
+
+      border: none;
+      outline: none;
+
+      padding: 13px 15px;
+
+      font-size: 16px;
+      background: transparent;
+
+      color: #111827;
+
+      text-align: right;
+    }
+
+    .search-box button {
+      border: none;
+
+      background: #16a34a;
+      color: white;
+
+      padding: 12px 20px;
+
+      border-radius: 11px;
+
+      font-size: 15px;
+      font-weight: 800;
+
+      cursor: pointer;
+
+      transition: 0.2s ease;
+    }
+
+    .search-box button:hover {
+      background: #15803d;
+    }
+
+    /* =========================
+       CATEGORIES
+    ========================= */
+
+    .categories-section {
+      width: min(1150px, 92%);
+      margin: 20px auto 80px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-title h2 {
+      font-size: 30px;
+      font-weight: 900;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #64748b;
+      font-size: 15px;
+    }
+
+    .categories-grid {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 18px;
+    }
+
+    .category-card {
+      text-decoration: none;
+
+      background: #ffffff;
+
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+
+      padding: 28px 18px;
+
+      text-align: center;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.035);
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+
+      border-color: #86efac;
+
+      box-shadow: 0 12px 30px rgba(22, 163, 74, 0.10);
+    }
+
+    .category-icon {
+      width: 65px;
+      height: 65px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto 15px;
+
+      background: #ecfdf5;
+
+      border-radius: 18px;
+
+      font-size: 31px;
+    }
+
+    .category-card h3 {
+      color: #111827;
+
+      font-size: 18px;
+      font-weight: 900;
+
+      margin-bottom: 7px;
+    }
+
+    .category-card p {
+      color: #64748b;
+
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid #e5e7eb;
+
+      text-align: center;
+
+      padding: 28px 20px;
+
+      color: #64748b;
+
+      font-size: 14px;
+      line-height: 1.8;
+
+      background: #fafafa;
+    }
+
+    .developer-name {
+      display: block;
+
+      color: #111827;
+
+      font-size: 15px;
+      font-weight: 900;
+
+      margin-top: 3px;
+    }
+
+    /* =========================
+       TABLET
+    ========================= */
+
+    @media (max-width: 900px) {
+      .categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 650px) {
+      nav {
+        padding: 12px 4%;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+
+      .nav-links {
+        gap: 3px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+        padding: 8px 9px;
+      }
+
+      .hero {
+        padding-top: 55px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .search-box {
+        width: 95%;
+      }
+
+      .search-box input {
+        font-size: 14px;
+      }
+
+      .search-box button {
+        padding: 11px 14px;
+      }
+
+      .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .category-card {
+        padding: 22px 12px;
+      }
+
+      .category-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 26px;
+      }
+
+      .category-card h3 {
+        font-size: 16px;
+      }
+
+      .category-card p {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .nav-links a {
+        padding: 7px 6px;
+        font-size: 11px;
+      }
+
+      .categories-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVBAR
+  ========================= -->
+
+  <nav>
+    <a href="index.html" class="logo">
+      ICEMAN
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">🏠 الرئيسية</a>
+      <a href="#categories">🧭 المجالات</a>
+    </div>
+  </nav>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <main>
+
+    <section class="hero">
+
+      <div class="badge">
+        ✦ أدواتك ومواقعك في مكان واحد
+      </div>
+
+      <h1>
+        ICEMAN
+      </h1>
+
+      <p>
+        اكتشف أفضل التطبيقات والمواقع والأدوات بسهولة
+      </p>
+
+      <div class="search-box">
+
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="ابحث عن مجال..."
+          autocomplete="off"
+        >
+
+        <button id="searchButton">
+          🔍 بحث
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CATEGORIES
+    ========================= -->
+
+    <section
+      class="categories-section"
+      id="categories"
+    >
+
+      <div class="section-title">
+
+        <h2>
+          استكشف المجالات
+        </h2>
+
+        <p>
+          اختر المجال الذي تريد استكشافه
+        </p>
+
+      </div>
+
+
+      <div class="categories-grid">
+
+        <!-- 1 -->
+
+        <a
+          href="ai.html"
+          class="category-card"
+        >
+
+          <div class="category-icon">
+            🤖
+          </div>
+
+          <h3>
+            الذكاء الاصطناعي
+          </h3>
+
+          <p>
+            أدوات ومواقع الذكاء الاصطناعي
+          </p>
+
+        </a>
+
+
+        <!-- 2 -->
+
+        <a
+          href="programming.html"
+          class="category-card"
+        >
+
+          <div class="category-icon">
+            💻
+          </div>
+
+          <h3>
+            البرمجة
+          </h3>
+
+          <p>
+            البرمجة والتطوير ومصادر التعلم
+          </p>
+
+        </a>
+
+
+        <!-- 3 -->
+
+        <a
+          href="cybersecurity.html"
+          class="category-card"
+        >
+
+          <div class="category-icon">
+            🔐
+          </div>
+
+          <h3>
+            الأمن السيبراني
+          </h3>
+
+          <p>
+            الأمن والحماية ومصادر التدريب
+          </p>
+
+        </a>
+
+
+        <!-- 4 -->
+
+        <a
+          href="education.html"
+          class="category-card"
+        >
+
+          <div class="category-icon">
+            🎓
+          </div>
+
+          <h3>
+            التعليم
+          </h3>
+
+          <p>
+            مواقع وكورسات ومصادر تعليمية
+          </p>
+
+        </a>
+
+
+        <!-- 5 -->
+
+        <a
+          href="design.html"
+          class="category-card"
+        >
+
+          <div class="category-icon">
+            🎨
+          </div>
+
+          <h3>
+            التصميم
+          </h3>
+
+          <p>
+            التصميم والصور والجرافيك
+          </p>
+
+        </a>
+
+
+        <!-- 6 -->
+
+        <a
+          href="video.html"
+          class="category-card"
+        >
+
+          <div class="category-icon">
+            🎬
+          </div>
+
+          <h3>
+            الفيديو
+          </h3>
+
+          <p>
+            أدوات تحرير وصناعة الفيديو
+          </p>
+
+        </a>
+
+
+        <!-- 7 -->
+
+        <a
+          href="tools.html"
+          class="category-card"
+        >
+
+          <div class="category-icon">
+            🛠️
+          </div>
+
+          <h3>
+            الأدوات
+          </h3>
+
+          <p>
+            أدوات مفيدة لمختلف الاستخدامات
+          </p>
+
+        </a>
+
+
+        <!-- 8 -->
+
+        <a
+          href="apps.html"
+          class="category-card"
+        >
+
+          <div class="category-icon">
+            📱
+          </div>
+
+          <h3>
+            التطبيقات
+          </h3>
+
+          <p>
+            تطبيقات ومصادر للهواتف
+          </p>
+
+        </a>
+
+
+        <!-- 9 -->
+
+        <a
+          href="writing.html"
+          class="category-card"
+        >
+
+          <div class="category-icon">
+            📝
+          </div>
+
+          <h3>
+            الكتابة والمحتوى
+          </h3>
+
+          <p>
+            الكتابة وصناعة المحتوى
+          </p>
+
+        </a>
+
+
+        <!-- 10 -->
+
+        <a
+          href="internet.html"
+          class="category-card"
+        >
+
+          <div class="category-icon">
+            🌐
+          </div>
+
+          <h3>
+            الإنترنت والشبكات
+          </h3>
+
+          <p>
+            الإنترنت والشبكات والخدمات
+          </p>
+
+        </a>
+
+
+        <!-- 11 -->
+
+        <a
+          href="audio.html"
+          class="category-card"
+        >
+
+          <div class="category-icon">
+            🎵
+          </div>
+
+          <h3>
+            الصوت والموسيقى
+          </h3>
+
+          <p>
+            أدوات الصوت والموسيقى
+          </p>
+
+        </a>
+
+
+        <!-- 12 -->
+
+        <a
+          href="pdf.html"
+          class="category-card"
+        >
+
+          <div class="category-icon">
+            📄
+          </div>
+
+          <h3>
+            الملفات و PDF
+          </h3>
+
+          <p>
+            أدوات PDF والملفات والمستندات
+          </p>
+
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div>
+      © 2026 ICEMAN
+    </div>
+
+    <div>
+      تم التطوير بواسطة
+    </div>
+
+    <span class="developer-name">
+      ✦ المهندس محمد إبراهيم محمد أحمد عامر ✦
+    </span>
+
+  </footer>
+
+</body>
+</html>
+```

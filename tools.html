@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -218,8 +219,76 @@
       font-size: 13px;
     }
 
-    .empty-content {
-      min-height: 300px;
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .tool-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 18px;
+      background: #fff;
+      transition: .2s;
+    }
+
+    .tool-card:hover {
+      border-color: #86efac;
+      transform: translateY(-2px);
+    }
+
+    .tool-card h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+      font-weight: 900;
+    }
+
+    .tool-card p {
+      color: #6b7280;
+      font-size: 13px;
+      line-height: 1.7;
+      min-height: 44px;
+      margin-bottom: 12px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+      padding: 5px 8px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .tool-link {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: #ecfdf3;
+      color: #15803d;
+      padding: 10px;
+      border-radius: 11px;
+      font-weight: 800;
+      transition: .2s;
+    }
+
+    .tool-link:hover {
+      background: #dcfce7;
+    }
+
+    .loading,
+    .empty-content,
+    .error-content {
+      min-height: 250px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -233,13 +302,17 @@
       margin-bottom: 15px;
     }
 
-    .empty-content h3 {
+    .loading h3,
+    .empty-content h3,
+    .error-content h3 {
       font-size: 20px;
       margin-bottom: 8px;
       font-weight: 900;
     }
 
-    .empty-content p {
+    .loading p,
+    .empty-content p,
+    .error-content p {
       color: #6b7280;
       font-size: 14px;
       line-height: 1.8;
@@ -269,6 +342,12 @@
       font-size: 15px;
       font-weight: 900;
       margin-top: 6px;
+    }
+
+    @media (max-width: 1050px) {
+      .tools-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 800px) {
@@ -323,6 +402,12 @@
       }
     }
 
+    @media (max-width: 600px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 500px) {
       nav {
         height: 62px;
@@ -370,7 +455,6 @@
     </div>
   </nav>
 
-
   <div class="page-layout">
 
     <aside class="sidebar">
@@ -386,94 +470,95 @@
           data-icon="🛠️"
           data-title="كل الأدوات"
           data-description="جميع الأدوات المتوفرة داخل ICEMAN"
+          data-filter="all"
         >
           <span class="category-icon">🛠️</span>
           <span class="category-name">كل الأدوات</span>
         </button>
-
 
         <button
           class="category-button"
           data-icon="🧮"
           data-title="الحسابات والتحويلات"
           data-description="أدوات الحساب وتحويل الوحدات والعملات والمقاسات"
+          data-filter="الحساب"
         >
           <span class="category-icon">🧮</span>
           <span class="category-name">الحسابات والتحويلات</span>
         </button>
-
 
         <button
           class="category-button"
           data-icon="📄"
           data-title="أدوات الملفات"
           data-description="أدوات التعامل مع الملفات والمستندات"
+          data-filter="ملف"
         >
           <span class="category-icon">📄</span>
           <span class="category-name">أدوات الملفات</span>
         </button>
-
 
         <button
           class="category-button"
           data-icon="🖼️"
           data-title="الصور"
           data-description="أدوات تعديل الصور وضغطها وتحويلها"
+          data-filter="صور"
         >
           <span class="category-icon">🖼️</span>
           <span class="category-name">أدوات الصور</span>
         </button>
-
 
         <button
           class="category-button"
           data-icon="🎬"
           data-title="الفيديو والصوت"
           data-description="أدوات معالجة الفيديو والصوت والوسائط"
+          data-filter="فيديو"
         >
           <span class="category-icon">🎬</span>
           <span class="category-name">الفيديو والصوت</span>
         </button>
-
 
         <button
           class="category-button"
           data-icon="🔤"
           data-title="النصوص والكتابة"
           data-description="أدوات النصوص والكتابة والتنسيق"
+          data-filter="نص"
         >
           <span class="category-icon">🔤</span>
           <span class="category-name">النصوص والكتابة</span>
         </button>
-
 
         <button
           class="category-button"
           data-icon="🔐"
           data-title="الأمان والخصوصية"
           data-description="أدوات مفيدة للأمان والخصوصية الرقمية"
+          data-filter="أمان"
         >
           <span class="category-icon">🔐</span>
           <span class="category-name">الأمان والخصوصية</span>
         </button>
-
 
         <button
           class="category-button"
           data-icon="🌐"
           data-title="أدوات الإنترنت"
           data-description="أدوات مفيدة للشبكات والإنترنت والمواقع"
+          data-filter="إنترنت"
         >
           <span class="category-icon">🌐</span>
           <span class="category-name">أدوات الإنترنت</span>
         </button>
-
 
         <button
           class="category-button"
           data-icon="💻"
           data-title="أدوات البرمجة"
           data-description="أدوات تساعد المبرمجين والمطورين في العمل"
+          data-filter="برمجة"
         >
           <span class="category-icon">💻</span>
           <span class="category-name">أدوات البرمجة</span>
@@ -482,7 +567,6 @@
       </div>
 
     </aside>
-
 
     <main class="main-content">
 
@@ -502,7 +586,6 @@
         </p>
 
       </section>
-
 
       <section class="content-box">
 
@@ -529,21 +612,15 @@
 
         </div>
 
+        <div id="toolsContainer">
 
-        <div class="empty-content">
-
-          <div class="empty-icon">
-            🛠️
+          <div class="loading">
+            <div class="empty-icon">⏳</div>
+            <h3>جاري تحميل الأدوات...</h3>
+            <p>
+              يتم الآن جلب الأدوات من قاعدة بيانات ICEMAN.
+            </p>
           </div>
-
-          <h3>
-            المحتوى قادم قريبًا
-          </h3>
-
-          <p>
-            سيتم إضافة الأدوات وتصنيفها وربطها داخل ICEMAN
-            بعد تجهيز قاعدة البيانات.
-          </p>
 
         </div>
 
@@ -552,7 +629,6 @@
     </main>
 
   </div>
-
 
   <footer>
 
@@ -570,6 +646,9 @@
 
   </footer>
 
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
 
   <script>
 
@@ -585,6 +664,188 @@
     const contentDescription =
       document.getElementById("contentDescription");
 
+    const toolsContainer =
+      document.getElementById("toolsContainer");
+
+    let allTools = [];
+
+    function escapeHTML(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function safeURL(value) {
+      try {
+        const url = new URL(value);
+
+        if (
+          url.protocol === "http:" ||
+          url.protocol === "https:"
+        ) {
+          return url.href;
+        }
+
+        return "#";
+      } catch {
+        return "#";
+      }
+    }
+
+    function matchesFilter(tool, filter) {
+
+      if (filter === "all") {
+        return true;
+      }
+
+      const text = [
+        tool.name || "",
+        tool.description || "",
+        tool.type || ""
+      ]
+        .join(" ")
+        .toLowerCase();
+
+      return text.includes(filter.toLowerCase());
+
+    }
+
+    function renderTools(tools) {
+
+      if (!tools || tools.length === 0) {
+
+        toolsContainer.innerHTML = `
+          <div class="empty-content">
+            <div class="empty-icon">🛠️</div>
+
+            <h3>
+              لا توجد أدوات هنا حاليًا
+            </h3>
+
+            <p>
+              سيتم إضافة الأدوات إلى هذا القسم من لوحة الإدارة.
+            </p>
+          </div>
+        `;
+
+        return;
+      }
+
+      toolsContainer.innerHTML = `
+        <div class="tools-grid">
+
+          ${tools.map((tool) => {
+
+            const name =
+              escapeHTML(tool.name || "بدون اسم");
+
+            const description =
+              escapeHTML(tool.description || "");
+
+            const type =
+              escapeHTML(tool.type || "أداة");
+
+            const price =
+              escapeHTML(tool.price || "مجاني");
+
+            const url =
+              safeURL(tool.url || "#");
+
+            return `
+              <article class="tool-card">
+
+                <h3>${name}</h3>
+
+                <p>
+                  ${description}
+                </p>
+
+                <div class="tags">
+
+                  <span class="tag">
+                    ${type}
+                  </span>
+
+                  <span class="tag">
+                    ${price}
+                  </span>
+
+                </div>
+
+                <a
+                  class="tool-link"
+                  href="${url}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  🌐 فتح الأداة
+                </a>
+
+              </article>
+            `;
+
+          }).join("")}
+
+        </div>
+      `;
+    }
+
+    async function loadTools() {
+
+      toolsContainer.innerHTML = `
+        <div class="loading">
+          <div class="empty-icon">⏳</div>
+          <h3>جاري تحميل الأدوات...</h3>
+          <p>
+            يتم الآن جلب الأدوات من قاعدة بيانات ICEMAN.
+          </p>
+        </div>
+      `;
+
+      const {
+        data,
+        error
+      } = await supabaseClient
+        .from("tools")
+        .select("*")
+        .eq("category", "أدوات")
+        .order("created_at", {
+          ascending: false
+        });
+
+      if (error) {
+
+        console.error(
+          "خطأ في تحميل أدوات ICEMAN:",
+          error
+        );
+
+        toolsContainer.innerHTML = `
+          <div class="error-content">
+
+            <div class="empty-icon">⚠️</div>
+
+            <h3>
+              حصل خطأ أثناء تحميل الأدوات
+            </h3>
+
+            <p>
+              حاول تحديث الصفحة مرة أخرى.
+            </p>
+
+          </div>
+        `;
+
+        return;
+      }
+
+      allTools = data || [];
+
+      renderTools(allTools);
+    }
 
     categoryButtons.forEach((button) => {
 
@@ -605,15 +866,28 @@
         const description =
           button.dataset.description;
 
+        const filter =
+          button.dataset.filter || "all";
+
         contentIcon.textContent = icon;
         contentTitle.textContent = title;
         contentDescription.textContent = description;
+
+        const filteredTools =
+          allTools.filter((tool) =>
+            matchesFilter(tool, filter)
+          );
+
+        renderTools(filteredTools);
 
       });
 
     });
 
+    loadTools();
+
   </script>
 
 </body>
 </html>
+```

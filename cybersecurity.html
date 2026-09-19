@@ -20,21 +20,14 @@
       min-height: 100vh;
     }
 
-    /* =========================
-       NAVBAR
-    ========================= */
-
     nav {
       height: 70px;
       background: #ffffff;
       border-bottom: 1px solid #e5e7eb;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       padding: 0 35px;
-
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -56,13 +49,10 @@
     .nav-links a {
       text-decoration: none;
       color: #374151;
-
       padding: 10px 15px;
       border-radius: 10px;
-
       font-size: 14px;
       font-weight: 700;
-
       transition: 0.2s;
     }
 
@@ -71,36 +61,21 @@
       color: #059669;
     }
 
-    /* =========================
-       PAGE LAYOUT
-    ========================= */
-
     .page-layout {
       width: min(1400px, 95%);
       margin: 30px auto;
-
       display: grid;
       grid-template-columns: 220px 1fr;
-
       gap: 25px;
-
       direction: rtl;
     }
 
-    /* =========================
-       SIDEBAR
-    ========================= */
-
     .sidebar {
       background: #ffffff;
-
       border: 1px solid #e5e7eb;
       border-radius: 18px;
-
       padding: 15px;
-
       height: fit-content;
-
       position: sticky;
       top: 90px;
     }
@@ -108,9 +83,7 @@
     .sidebar-title {
       font-size: 17px;
       font-weight: 900;
-
       margin-bottom: 15px;
-
       color: #111827;
     }
 
@@ -122,25 +95,16 @@
 
     .category-button {
       width: 100%;
-
       border: none;
       background: transparent;
-
       display: flex;
       align-items: center;
-
       gap: 10px;
-
       padding: 9px;
-
       border-radius: 12px;
-
       cursor: pointer;
-
       text-align: right;
-
       font-family: inherit;
-
       transition: 0.2s;
     }
 
@@ -156,19 +120,13 @@
     .category-icon {
       width: 36px;
       height: 36px;
-
       min-width: 36px;
-
       border-radius: 50%;
-
       background: #f0fdf4;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       font-size: 17px;
-
       border: 1px solid #bbf7d0;
     }
 
@@ -183,211 +141,196 @@
       line-height: 1.4;
     }
 
-    /* =========================
-       MAIN CONTENT
-    ========================= */
-
     .main-content {
       min-width: 0;
     }
 
     .hero {
       background: #ffffff;
-
       border: 1px solid #e5e7eb;
       border-radius: 22px;
-
       padding: 35px;
-
       margin-bottom: 20px;
     }
 
     .hero-badge {
       display: inline-block;
-
       background: #ecfdf5;
       color: #047857;
-
       border: 1px solid #a7f3d0;
-
       padding: 7px 12px;
-
       border-radius: 999px;
-
       font-size: 13px;
       font-weight: 800;
-
       margin-bottom: 15px;
     }
 
     .hero h1 {
       font-size: clamp(30px, 5vw, 48px);
-
       line-height: 1.1;
-
       margin-bottom: 12px;
-
       font-weight: 900;
     }
 
     .hero p {
       color: #6b7280;
-
       font-size: 15px;
-
       line-height: 1.8;
-
       max-width: 700px;
     }
 
-    /* =========================
-       CONTENT BOX
-    ========================= */
-
     .content-box {
       background: #ffffff;
-
       border: 1px solid #e5e7eb;
-
       border-radius: 22px;
-
       padding: 25px;
     }
 
     .content-header {
       display: flex;
       align-items: center;
-
       gap: 15px;
-
       padding-bottom: 20px;
-
       border-bottom: 1px solid #e5e7eb;
-
       margin-bottom: 20px;
     }
 
     .content-icon {
       width: 52px;
       height: 52px;
-
       min-width: 52px;
-
       border-radius: 15px;
-
       background: #dcfce7;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       font-size: 25px;
     }
 
     .content-header h2 {
       font-size: 22px;
-
       margin-bottom: 5px;
-
       font-weight: 900;
     }
 
     .content-header p {
       color: #6b7280;
-
       font-size: 13px;
     }
 
-    /* =========================
-       EMPTY CONTENT
-    ========================= */
-
-    .empty-content {
-      min-height: 300px;
-
-      display: flex;
-      flex-direction: column;
-
-      align-items: center;
-      justify-content: center;
-
-      text-align: center;
-
-      padding: 30px;
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
     }
 
-    .empty-icon {
-      font-size: 50px;
-
-      margin-bottom: 15px;
+    .tool-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 17px;
+      padding: 18px;
+      background: #ffffff;
+      transition: 0.2s;
     }
 
-    .empty-content h3 {
-      font-size: 20px;
+    .tool-card:hover {
+      transform: translateY(-3px);
+      border-color: #bbf7d0;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    }
 
-      margin-bottom: 8px;
-
+    .tool-card h3 {
+      font-size: 17px;
       font-weight: 900;
+      margin-bottom: 8px;
     }
 
-    .empty-content p {
+    .tool-card p {
       color: #6b7280;
-
-      font-size: 14px;
-
-      line-height: 1.8;
-
-      max-width: 500px;
+      font-size: 13px;
+      line-height: 1.7;
+      min-height: 44px;
+      margin-bottom: 12px;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 13px;
+    }
+
+    .tag {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .open-tool {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: #ecfdf3;
+      color: #15803d;
+      padding: 10px;
+      border-radius: 11px;
+      font-weight: 800;
+      font-size: 13px;
+      transition: 0.2s;
+    }
+
+    .open-tool:hover {
+      background: #dcfce7;
+    }
+
+    .status {
+      text-align: center;
+      padding: 50px 20px;
+      color: #6b7280;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .status-icon {
+      font-size: 45px;
+      margin-bottom: 12px;
+    }
 
     footer {
       text-align: center;
-
       padding: 40px 20px;
-
       margin-top: 50px;
-
       color: #6b7280;
-
       font-size: 13px;
-
       line-height: 1.8;
     }
 
     .developer-name {
       display: block;
-
       color: #166534;
-
       font-size: 15px;
-
       font-weight: 900;
-
       margin-top: 5px;
     }
 
     .partner-name {
       display: block;
-
       color: #451a03;
-
       font-size: 15px;
-
       font-weight: 900;
-
       margin-top: 6px;
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
+    @media (max-width: 1000px) {
+      .tools-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
 
     @media (max-width: 800px) {
-
       nav {
         padding: 0 15px;
       }
@@ -399,17 +342,13 @@
 
       .page-layout {
         grid-template-columns: 1fr;
-
         width: 94%;
-
         gap: 15px;
       }
 
       .sidebar {
         position: static;
-
         padding: 12px;
-
         overflow: hidden;
       }
 
@@ -419,19 +358,14 @@
 
       .category-list {
         flex-direction: row;
-
         overflow-x: auto;
-
         padding-bottom: 5px;
-
         scrollbar-width: thin;
       }
 
       .category-button {
         min-width: max-content;
-
         width: auto;
-
         padding: 7px 9px;
       }
 
@@ -448,8 +382,13 @@
       }
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
+    @media (max-width: 500px) {
       nav {
         height: 62px;
       }
@@ -487,12 +426,7 @@
 
 <body>
 
-  <!-- =========================
-       NAVBAR
-  ========================= -->
-
   <nav>
-
     <a href="index.html" class="logo">
       ICEMAN
     </a>
@@ -501,17 +435,9 @@
       <a href="index.html">🏠 الرئيسية</a>
       <a href="index.html">🧭 المجالات</a>
     </div>
-
   </nav>
 
-
-  <!-- =========================
-       PAGE
-  ========================= -->
-
   <div class="page-layout">
-
-    <!-- SIDEBAR -->
 
     <aside class="sidebar">
 
@@ -523,100 +449,84 @@
 
         <button
           class="category-button active"
+          data-section="مواقع الأمن السيبراني"
           data-icon="🌐"
           data-title="مواقع الأمن السيبراني"
           data-description="مواقع ومنصات مفيدة للتعلم ومتابعة أخبار ومجالات الأمن السيبراني"
         >
           <span class="category-icon">🌐</span>
-          <span class="category-name">
-            مواقع الأمن السيبراني
-          </span>
+          <span class="category-name">مواقع الأمن السيبراني</span>
         </button>
-
 
         <button
           class="category-button"
+          data-section="الحماية والدفاع"
           data-icon="🛡️"
           data-title="الحماية والدفاع"
           data-description="مصادر وأدوات تساعدك على فهم الحماية والدفاع وتأمين الأنظمة"
         >
           <span class="category-icon">🛡️</span>
-          <span class="category-name">
-            الحماية والدفاع
-          </span>
+          <span class="category-name">الحماية والدفاع</span>
         </button>
-
 
         <button
           class="category-button"
+          data-section="مختبرات التدريب"
           data-icon="🧪"
           data-title="مختبرات التدريب"
           data-description="بيئات تدريب قانونية وآمنة للتعلم والتجربة في الأمن السيبراني"
         >
           <span class="category-icon">🧪</span>
-          <span class="category-name">
-            مختبرات التدريب
-          </span>
+          <span class="category-name">مختبرات التدريب</span>
         </button>
-
 
         <button
           class="category-button"
+          data-section="اختبار الاختراق"
           data-icon="🧰"
           data-title="اختبار الاختراق"
           data-description="مصادر وأدوات تعليمية لاختبار الاختراق بشكل قانوني وفي بيئات مصرح بها"
         >
           <span class="category-icon">🧰</span>
-          <span class="category-name">
-            اختبار الاختراق
-          </span>
+          <span class="category-name">اختبار الاختراق</span>
         </button>
-
 
         <button
           class="category-button"
+          data-section="الكورسات"
           data-icon="🎓"
           data-title="الكورسات"
           data-description="دورات تعليمية لتعلم أساسيات ومجالات الأمن السيبراني"
         >
           <span class="category-icon">🎓</span>
-          <span class="category-name">
-            الكورسات
-          </span>
+          <span class="category-name">الكورسات</span>
         </button>
-
 
         <button
           class="category-button"
+          data-section="الفيديوهات"
           data-icon="🎥"
           data-title="الفيديوهات"
           data-description="فيديوهات وشروحات مرئية لتعلم الأمن السيبراني"
         >
           <span class="category-icon">🎥</span>
-          <span class="category-name">
-            الفيديوهات
-          </span>
+          <span class="category-name">الفيديوهات</span>
         </button>
-
 
         <button
           class="category-button"
+          data-section="مصادر التعلم"
           data-icon="📚"
           data-title="مصادر التعلم"
           data-description="كتب ومقالات ومراجع ومصادر إضافية للتعلم والتطوير"
         >
           <span class="category-icon">📚</span>
-          <span class="category-name">
-            مصادر التعلم
-          </span>
+          <span class="category-name">مصادر التعلم</span>
         </button>
 
       </div>
 
     </aside>
-
-
-    <!-- MAIN -->
 
     <main class="main-content">
 
@@ -637,20 +547,15 @@
 
       </section>
 
-
       <section class="content-box">
 
         <div class="content-header">
 
-          <div
-            class="content-icon"
-            id="contentIcon"
-          >
+          <div class="content-icon" id="contentIcon">
             🌐
           </div>
 
           <div>
-
             <h2 id="contentTitle">
               مواقع الأمن السيبراني
             </h2>
@@ -658,26 +563,16 @@
             <p id="contentDescription">
               مواقع ومنصات مفيدة للتعلم ومتابعة أخبار ومجالات الأمن السيبراني
             </p>
-
           </div>
 
         </div>
 
+        <div id="toolsContainer" class="tools-grid">
 
-        <div class="empty-content">
-
-          <div class="empty-icon">
-            🔐
+          <div class="status">
+            <div class="status-icon">⏳</div>
+            جاري تحميل المحتوى...
           </div>
-
-          <h3>
-            المحتوى قادم قريبًا
-          </h3>
-
-          <p>
-            سيتم إضافة المواقع والأدوات والمختبرات والكورسات
-            والفيديوهات الخاصة بهذا القسم بعد تجهيز قاعدة بيانات ICEMAN.
-          </p>
 
         </div>
 
@@ -686,11 +581,6 @@
     </main>
 
   </div>
-
-
-  <!-- =========================
-       FOOTER
-  ========================= -->
 
   <footer>
 
@@ -713,9 +603,11 @@
   </footer>
 
 
-  <!-- =========================
-       JAVASCRIPT
-  ========================= -->
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- ملف الاتصال -->
+  <script src="supabase.js"></script>
 
   <script>
 
@@ -731,6 +623,281 @@
     const contentDescription =
       document.getElementById("contentDescription");
 
+    const toolsContainer =
+      document.getElementById("toolsContainer");
+
+
+    let allTools = [];
+
+
+    function escapeHTML(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+
+    function safeURL(value) {
+
+      try {
+
+        const url = new URL(value);
+
+        if (
+          url.protocol === "http:" ||
+          url.protocol === "https:"
+        ) {
+          return url.href;
+        }
+
+      } catch (error) {}
+
+      return "#";
+    }
+
+
+    function matchesSection(tool, section) {
+
+      const type =
+        String(tool.type || "").toLowerCase();
+
+      const description =
+        String(tool.description || "").toLowerCase();
+
+      const name =
+        String(tool.name || "").toLowerCase();
+
+      const text =
+        `${name} ${description} ${type}`;
+
+
+      if (section === "مواقع الأمن السيبراني") {
+        return (
+          type.includes("موقع") ||
+          type.includes("site") ||
+          text.includes("منصة") ||
+          text.includes("موقع")
+        );
+      }
+
+
+      if (section === "الحماية والدفاع") {
+        return (
+          text.includes("حماية") ||
+          text.includes("دفاع") ||
+          text.includes("security") ||
+          text.includes("firewall") ||
+          text.includes("أمان")
+        );
+      }
+
+
+      if (section === "مختبرات التدريب") {
+        return (
+          text.includes("مختبر") ||
+          text.includes("lab") ||
+          text.includes("training") ||
+          text.includes("تدريب")
+        );
+      }
+
+
+      if (section === "اختبار الاختراق") {
+        return (
+          text.includes("اختبار اختراق") ||
+          text.includes("penetration") ||
+          text.includes("pentest") ||
+          text.includes("exploit")
+        );
+      }
+
+
+      if (section === "الكورسات") {
+        return (
+          text.includes("كورس") ||
+          text.includes("دورة") ||
+          text.includes("course") ||
+          text.includes("learning")
+        );
+      }
+
+
+      if (section === "الفيديوهات") {
+        return (
+          text.includes("فيديو") ||
+          text.includes("video") ||
+          text.includes("youtube")
+        );
+      }
+
+
+      if (section === "مصادر التعلم") {
+        return (
+          text.includes("كتاب") ||
+          text.includes("مقال") ||
+          text.includes("مرجع") ||
+          text.includes("مصدر") ||
+          text.includes("book") ||
+          text.includes("article")
+        );
+      }
+
+
+      return true;
+    }
+
+
+    function renderTools(section) {
+
+      const filteredTools =
+        allTools.filter((tool) =>
+          matchesSection(tool, section)
+        );
+
+
+      if (!filteredTools.length) {
+
+        toolsContainer.innerHTML = `
+          <div class="status">
+            <div class="status-icon">🔐</div>
+
+            <h3 style="
+              color:#111827;
+              font-size:20px;
+              font-weight:900;
+              margin-bottom:8px;
+            ">
+              لا يوجد محتوى في هذا القسم حالياً
+            </h3>
+
+            <p>
+              سيتم إضافة الأدوات والمواقع والمصادر
+              الخاصة بهذا القسم من لوحة الإدارة.
+            </p>
+          </div>
+        `;
+
+        return;
+      }
+
+
+      toolsContainer.innerHTML =
+        filteredTools.map((tool) => {
+
+          const url =
+            safeURL(tool.url);
+
+
+          return `
+            <article class="tool-card">
+
+              <h3>
+                ${escapeHTML(tool.name)}
+              </h3>
+
+              <p>
+                ${escapeHTML(tool.description)}
+              </p>
+
+              <div class="tags">
+
+                <span class="tag">
+                  🔐 أمن سيبراني
+                </span>
+
+                <span class="tag">
+                  ${escapeHTML(tool.type || "محتوى")}
+                </span>
+
+                <span class="tag">
+                  ${escapeHTML(tool.price || "مجاني")}
+                </span>
+
+              </div>
+
+              <a
+                class="open-tool"
+                href="${escapeHTML(url)}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                🌐 فتح المحتوى
+              </a>
+
+            </article>
+          `;
+
+        }).join("");
+    }
+
+
+    async function loadCybersecurityTools() {
+
+      toolsContainer.innerHTML = `
+        <div class="status">
+          <div class="status-icon">⏳</div>
+          جاري تحميل محتوى الأمن السيبراني...
+        </div>
+      `;
+
+
+      const {
+        data,
+        error
+      } = await supabaseClient
+        .from("tools")
+        .select("*")
+        .eq("category", "Cybersecurity")
+        .order("created_at", {
+          ascending: false
+        });
+
+
+      if (error) {
+
+        console.error(
+          "خطأ في تحميل أدوات الأمن السيبراني:",
+          error
+        );
+
+
+        toolsContainer.innerHTML = `
+          <div class="status">
+
+            <div class="status-icon">
+              ⚠️
+            </div>
+
+            <h3 style="
+              color:#111827;
+              font-size:20px;
+              font-weight:900;
+              margin-bottom:8px;
+            ">
+              حصل خطأ أثناء تحميل المحتوى
+            </h3>
+
+            <p>
+              تأكد من الاتصال بقاعدة بيانات ICEMAN
+              ثم حاول مرة أخرى.
+            </p>
+
+          </div>
+        `;
+
+        return;
+      }
+
+
+      allTools = data || [];
+
+
+      renderTools("مواقع الأمن السيبراني");
+    }
+
 
     categoryButtons.forEach((button) => {
 
@@ -739,6 +906,7 @@
         categoryButtons.forEach((item) => {
           item.classList.remove("active");
         });
+
 
         button.classList.add("active");
 
@@ -752,17 +920,28 @@
         const description =
           button.dataset.description;
 
+        const section =
+          button.dataset.section;
 
-        contentIcon.textContent = icon;
 
-        contentTitle.textContent = title;
+        contentIcon.textContent =
+          icon;
+
+        contentTitle.textContent =
+          title;
 
         contentDescription.textContent =
           description;
 
+
+        renderTools(section);
+
       });
 
     });
+
+
+    loadCybersecurityTools();
 
   </script>
 

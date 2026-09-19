@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -218,6 +219,72 @@
       font-size: 13px;
     }
 
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .tool-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 18px;
+      background: #fff;
+      transition: .2s;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-3px);
+      border-color: #86efac;
+      box-shadow: 0 10px 25px rgba(0,0,0,.06);
+    }
+
+    .tool-card h3 {
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .tool-card p {
+      color: #6b7280;
+      font-size: 13px;
+      line-height: 1.7;
+      min-height: 45px;
+      margin-bottom: 12px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .open-tool {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: #ecfdf3;
+      color: #15803d;
+      padding: 10px;
+      border-radius: 11px;
+      font-weight: 800;
+    }
+
+    .open-tool:hover {
+      background: #dcfce7;
+    }
+
     .empty-content {
       min-height: 300px;
       display: flex;
@@ -269,6 +336,12 @@
       font-size: 15px;
       font-weight: 900;
       margin-top: 6px;
+    }
+
+    @media (max-width: 1000px) {
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 800px) {
@@ -323,6 +396,12 @@
       }
     }
 
+    @media (max-width: 600px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 500px) {
       nav {
         height: 62px;
@@ -357,6 +436,7 @@
       }
     }
   </style>
+
 </head>
 
 <body>
@@ -364,214 +444,224 @@
   <nav>
     <a href="index.html" class="logo">ICEMAN</a>
 
-    <div class="nav-links">
-      <a href="index.html">🏠 الرئيسية</a>
-      <a href="index.html">🧭 المجالات</a>
-    </div>
-  </nav>
+```
+<div class="nav-links">
+  <a href="index.html">🏠 الرئيسية</a>
+  <a href="index.html">🧭 المجالات</a>
+</div>
+```
 
+  </nav>
 
   <div class="page-layout">
 
-    <aside class="sidebar">
+```
+<aside class="sidebar">
 
-      <div class="sidebar-title">
-        أقسام الملفات
-      </div>
+  <div class="sidebar-title">
+    أقسام الملفات
+  </div>
 
-      <div class="category-list">
+  <div class="category-list">
 
-        <button
-          class="category-button active"
-          data-icon="📄"
-          data-title="كل الملفات و PDF"
-          data-description="جميع أدوات ومواقع الملفات وملفات PDF"
-        >
-          <span class="category-icon">📄</span>
-          <span class="category-name">كل الملفات</span>
-        </button>
+    <button
+      class="category-button active"
+      data-filter="all"
+      data-icon="📄"
+      data-title="كل الملفات و PDF"
+      data-description="جميع أدوات ومواقع الملفات وملفات PDF"
+    >
+      <span class="category-icon">📄</span>
+      <span class="category-name">كل الملفات</span>
+    </button>
 
+    <button
+      class="category-button"
+      data-filter="pdf"
+      data-icon="📕"
+      data-title="PDF"
+      data-description="أدوات ومواقع التعامل مع ملفات PDF"
+    >
+      <span class="category-icon">📕</span>
+      <span class="category-name">PDF</span>
+    </button>
 
-        <button
-          class="category-button"
-          data-icon="📕"
-          data-title="PDF"
-          data-description="أدوات ومواقع التعامل مع ملفات PDF"
-        >
-          <span class="category-icon">📕</span>
-          <span class="category-name">PDF</span>
-        </button>
+    <button
+      class="category-button"
+      data-filter="convert"
+      data-icon="🔄"
+      data-title="تحويل الملفات"
+      data-description="أدوات تحويل الملفات بين الصيغ المختلفة"
+    >
+      <span class="category-icon">🔄</span>
+      <span class="category-name">تحويل الملفات</span>
+    </button>
 
+    <button
+      class="category-button"
+      data-filter="compress"
+      data-icon="🗜️"
+      data-title="ضغط الملفات"
+      data-description="أدوات ضغط وتصغير حجم الملفات"
+    >
+      <span class="category-icon">🗜️</span>
+      <span class="category-name">ضغط الملفات</span>
+    </button>
 
-        <button
-          class="category-button"
-          data-icon="🔄"
-          data-title="تحويل الملفات"
-          data-description="أدوات تحويل الملفات بين الصيغ المختلفة"
-        >
-          <span class="category-icon">🔄</span>
-          <span class="category-name">تحويل الملفات</span>
-        </button>
+    <button
+      class="category-button"
+      data-filter="merge"
+      data-icon="🔗"
+      data-title="دمج وتقسيم الملفات"
+      data-description="أدوات دمج وتقسيم ملفات PDF والمستندات"
+    >
+      <span class="category-icon">🔗</span>
+      <span class="category-name">دمج وتقسيم</span>
+    </button>
 
+    <button
+      class="category-button"
+      data-filter="edit"
+      data-icon="✏️"
+      data-title="تعديل PDF"
+      data-description="أدوات تعديل وكتابة وإضافة محتوى إلى ملفات PDF"
+    >
+      <span class="category-icon">✏️</span>
+      <span class="category-name">تعديل PDF</span>
+    </button>
 
-        <button
-          class="category-button"
-          data-icon="🗜️"
-          data-title="ضغط الملفات"
-          data-description="أدوات ضغط وتصغير حجم الملفات"
-        >
-          <span class="category-icon">🗜️</span>
-          <span class="category-name">ضغط الملفات</span>
-        </button>
+    <button
+      class="category-button"
+      data-filter="image"
+      data-icon="🖼️"
+      data-title="الصور والملفات"
+      data-description="أدوات تحويل الصور والتعامل معها داخل الملفات"
+    >
+      <span class="category-icon">🖼️</span>
+      <span class="category-name">الصور والملفات</span>
+    </button>
 
+    <button
+      class="category-button"
+      data-filter="documents"
+      data-icon="📝"
+      data-title="المستندات"
+      data-description="أدوات إنشاء وتحرير المستندات والملفات النصية"
+    >
+      <span class="category-icon">📝</span>
+      <span class="category-name">المستندات</span>
+    </button>
 
-        <button
-          class="category-button"
-          data-icon="🔗"
-          data-title="دمج وتقسيم الملفات"
-          data-description="أدوات دمج وتقسيم ملفات PDF والمستندات"
-        >
-          <span class="category-icon">🔗</span>
-          <span class="category-name">دمج وتقسيم</span>
-        </button>
-
-
-        <button
-          class="category-button"
-          data-icon="✏️"
-          data-title="تعديل PDF"
-          data-description="أدوات تعديل وكتابة وإضافة محتوى إلى ملفات PDF"
-        >
-          <span class="category-icon">✏️</span>
-          <span class="category-name">تعديل PDF</span>
-        </button>
-
-
-        <button
-          class="category-button"
-          data-icon="🖼️"
-          data-title="الصور والملفات"
-          data-description="أدوات تحويل الصور والتعامل معها داخل الملفات"
-        >
-          <span class="category-icon">🖼️</span>
-          <span class="category-name">الصور والملفات</span>
-        </button>
-
-
-        <button
-          class="category-button"
-          data-icon="📝"
-          data-title="المستندات"
-          data-description="أدوات إنشاء وتحرير المستندات والملفات النصية"
-        >
-          <span class="category-icon">📝</span>
-          <span class="category-name">المستندات</span>
-        </button>
-
-
-        <button
-          class="category-button"
-          data-icon="🔐"
-          data-title="حماية الملفات"
-          data-description="أدوات حماية وتشفير وتأمين الملفات والمستندات"
-        >
-          <span class="category-icon">🔐</span>
-          <span class="category-name">حماية الملفات</span>
-        </button>
-
-      </div>
-
-    </aside>
-
-
-    <main class="main-content">
-
-      <section class="hero">
-
-        <span class="hero-badge">
-          ✦ مجال الملفات و PDF
-        </span>
-
-        <h1>
-          الملفات و PDF
-        </h1>
-
-        <p>
-          اكتشف أدوات ومواقع لتحويل وضغط ودمج وتقسيم وتعديل
-          ملفات PDF والمستندات والصور بسهولة.
-        </p>
-
-      </section>
-
-
-      <section class="content-box">
-
-        <div class="content-header">
-
-          <div
-            class="content-icon"
-            id="contentIcon"
-          >
-            📄
-          </div>
-
-          <div>
-
-            <h2 id="contentTitle">
-              كل الملفات و PDF
-            </h2>
-
-            <p id="contentDescription">
-              جميع أدوات ومواقع الملفات وملفات PDF
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="empty-content">
-
-          <div class="empty-icon">
-            📄
-          </div>
-
-          <h3>
-            المحتوى قادم قريبًا
-          </h3>
-
-          <p>
-            سيتم إضافة أدوات ومواقع الملفات و PDF
-            بعد تجهيز قاعدة بيانات ICEMAN.
-          </p>
-
-        </div>
-
-      </section>
-
-    </main>
+    <button
+      class="category-button"
+      data-filter="security"
+      data-icon="🔐"
+      data-title="حماية الملفات"
+      data-description="أدوات حماية وتشفير وتأمين الملفات والمستندات"
+    >
+      <span class="category-icon">🔐</span>
+      <span class="category-name">حماية الملفات</span>
+    </button>
 
   </div>
 
+</aside>
+
+<main class="main-content">
+
+  <section class="hero">
+
+    <span class="hero-badge">
+      ✦ مجال الملفات و PDF
+    </span>
+
+    <h1>
+      الملفات و PDF
+    </h1>
+
+    <p>
+      اكتشف أدوات ومواقع لتحويل وضغط ودمج وتقسيم وتعديل
+      ملفات PDF والمستندات والصور بسهولة.
+    </p>
+
+  </section>
+
+  <section class="content-box">
+
+    <div class="content-header">
+
+      <div
+        class="content-icon"
+        id="contentIcon"
+      >
+        📄
+      </div>
+
+      <div>
+
+        <h2 id="contentTitle">
+          كل الملفات و PDF
+        </h2>
+
+        <p id="contentDescription">
+          جميع أدوات ومواقع الملفات وملفات PDF
+        </p>
+
+      </div>
+
+    </div>
+
+    <div
+      class="empty-content"
+      id="contentArea"
+    >
+      <div class="empty-icon">
+        ⏳
+      </div>
+
+      <h3>
+        جاري تحميل المحتوى...
+      </h3>
+
+      <p>
+        يتم الآن تحميل أدوات الملفات و PDF.
+      </p>
+    </div>
+
+  </section>
+
+</main>
+```
+
+  </div>
 
   <footer>
 
-    <div>© 2026 ICEMAN</div>
+```
+<div>© 2026 ICEMAN</div>
 
-    <div>تم التطوير بواسطة</div>
+<div>تم التطوير بواسطة</div>
 
-    <span class="developer-name">
-      ✦ المهندس محمد إبراهيم محمد أحمد عامر ✦
-    </span>
+<span class="developer-name">
+  ✦ المهندس محمد إبراهيم محمد أحمد عامر ✦
+</span>
 
-    <span class="partner-name">
-      بالتعاون مع منصة Allef
-    </span>
+<span class="partner-name">
+  بالتعاون مع منصة Allef
+</span>
+```
 
   </footer>
 
+  <!-- Supabase -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="supabase.js"></script>
 
   <script>
+
+    let allTools = [];
 
     const categoryButtons =
       document.querySelectorAll(".category-button");
@@ -584,6 +674,259 @@
 
     const contentDescription =
       document.getElementById("contentDescription");
+
+    const contentArea =
+      document.getElementById("contentArea");
+
+
+    function escapeHTML(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+
+    function safeURL(value) {
+      try {
+        const url = new URL(value);
+
+        if (
+          url.protocol === "http:" ||
+          url.protocol === "https:"
+        ) {
+          return url.href;
+        }
+
+        return "#";
+      } catch {
+        return "#";
+      }
+    }
+
+
+    function matchesFilter(tool, filter) {
+
+      if (filter === "all") {
+        return true;
+      }
+
+      const text = `
+        ${tool.name || ""}
+        ${tool.description || ""}
+        ${tool.type || ""}
+      `.toLowerCase();
+
+      const filters = {
+
+        pdf: [
+          "pdf",
+          "بي دي اف",
+          "document",
+          "document"
+        ],
+
+        convert: [
+          "تحويل",
+          "convert",
+          "word",
+          "excel",
+          "jpg",
+          "png",
+          "docx"
+        ],
+
+        compress: [
+          "ضغط",
+          "تصغير",
+          "compress",
+          "compressor",
+          "حجم"
+        ],
+
+        merge: [
+          "دمج",
+          "تقسيم",
+          "merge",
+          "split"
+        ],
+
+        edit: [
+          "تعديل",
+          "تحرير",
+          "edit",
+          "write",
+          "sign"
+        ],
+
+        image: [
+          "صورة",
+          "صور",
+          "image",
+          "images",
+          "jpg",
+          "png"
+        ],
+
+        documents: [
+          "مستند",
+          "مستندات",
+          "document",
+          "documents",
+          "word",
+          "docx"
+        ],
+
+        security: [
+          "حماية",
+          "تشفير",
+          "كلمة مرور",
+          "security",
+          "protect",
+          "encrypt",
+          "password"
+        ]
+
+      };
+
+      return (filters[filter] || []).some((keyword) =>
+        text.includes(keyword.toLowerCase())
+      );
+    }
+
+
+    function renderTools(filter = "all") {
+
+      const filteredTools =
+        allTools.filter((tool) =>
+          matchesFilter(tool, filter)
+        );
+
+
+      if (filteredTools.length === 0) {
+
+        contentArea.className = "empty-content";
+
+        contentArea.innerHTML = `
+          <div class="empty-icon">📄</div>
+
+          <h3>
+            لا يوجد محتوى حالياً
+          </h3>
+
+          <p>
+            لم تتم إضافة أدوات لهذا القسم بعد.
+          </p>
+        `;
+
+        return;
+      }
+
+
+      contentArea.className = "tools-grid";
+
+      contentArea.innerHTML =
+        filteredTools.map((tool) => {
+
+          return `
+            <article class="tool-card">
+
+              <h3>
+                ${escapeHTML(tool.name)}
+              </h3>
+
+              <p>
+                ${escapeHTML(tool.description)}
+              </p>
+
+              <div class="tags">
+
+                <span class="tag">
+                  ${escapeHTML(tool.type || "موقع")}
+                </span>
+
+                <span class="tag">
+                  ${escapeHTML(tool.price || "مجاني")}
+                </span>
+
+              </div>
+
+              <a
+                class="open-tool"
+                href="${safeURL(tool.url)}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                🌐 فتح الأداة
+              </a>
+
+            </article>
+          `;
+
+        }).join("");
+    }
+
+
+    async function loadTools() {
+
+      contentArea.className = "empty-content";
+
+      contentArea.innerHTML = `
+        <div class="empty-icon">⏳</div>
+
+        <h3>
+          جاري تحميل المحتوى...
+        </h3>
+
+        <p>
+          يتم الآن تحميل أدوات الملفات و PDF.
+        </p>
+      `;
+
+
+      const {
+        data,
+        error
+      } = await supabaseClient
+        .from("tools")
+        .select("*")
+        .eq("category", "PDF")
+        .order("created_at", {
+          ascending: false
+        });
+
+
+      if (error) {
+
+        console.error(
+          "خطأ في تحميل أدوات PDF:",
+          error
+        );
+
+        contentArea.className = "empty-content";
+
+        contentArea.innerHTML = `
+          <div class="empty-icon">⚠️</div>
+
+          <h3>
+            حصل خطأ أثناء تحميل المحتوى
+          </h3>
+
+          <p>
+            تأكد من اتصال الصفحة بقاعدة بيانات ICEMAN.
+          </p>
+        `;
+
+        return;
+      }
+
+
+      allTools = data || [];
+
+      renderTools("all");
+    }
 
 
     categoryButtons.forEach((button) => {
@@ -605,13 +948,26 @@
         const description =
           button.dataset.description;
 
-        contentIcon.textContent = icon;
-        contentTitle.textContent = title;
-        contentDescription.textContent = description;
+        const filter =
+          button.dataset.filter;
+
+        contentIcon.textContent =
+          icon;
+
+        contentTitle.textContent =
+          title;
+
+        contentDescription.textContent =
+          description;
+
+        renderTools(filter);
 
       });
 
     });
+
+
+    loadTools();
 
   </script>
 

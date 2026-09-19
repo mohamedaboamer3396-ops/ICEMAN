@@ -20,10 +20,6 @@
       min-height: 100vh;
     }
 
-    /* =========================
-       NAVBAR
-    ========================= */
-
     nav {
       height: 70px;
       background: #ffffff;
@@ -71,10 +67,6 @@
       color: #059669;
     }
 
-    /* =========================
-       PAGE LAYOUT
-    ========================= */
-
     .page-layout {
       width: min(1400px, 95%);
       margin: 30px auto;
@@ -86,10 +78,6 @@
 
       direction: rtl;
     }
-
-    /* =========================
-       SIDEBAR
-    ========================= */
 
     .sidebar {
       background: #ffffff;
@@ -183,10 +171,6 @@
       line-height: 1.4;
     }
 
-    /* =========================
-       MAIN CONTENT
-    ========================= */
-
     .main-content {
       min-width: 0;
     }
@@ -239,10 +223,6 @@
 
       max-width: 700px;
     }
-
-    /* =========================
-       CONTENT BOX
-    ========================= */
 
     .content-box {
       background: #ffffff;
@@ -298,10 +278,6 @@
       font-size: 13px;
     }
 
-    /* =========================
-       EMPTY CONTENT
-    ========================= */
-
     .empty-content {
       min-height: 300px;
 
@@ -341,8 +317,124 @@
     }
 
     /* =========================
-       FOOTER
+       TOOLS FROM SUPABASE
     ========================= */
+
+    .tools-grid {
+      width: 100%;
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+
+      gap: 15px;
+
+      text-align: right;
+    }
+
+    .tool-card {
+      background: #ffffff;
+
+      border: 1px solid #e5e7eb;
+
+      border-radius: 16px;
+
+      padding: 18px;
+
+      transition: 0.2s;
+
+      text-align: right;
+    }
+
+    .tool-card:hover {
+      border-color: #bbf7d0;
+
+      transform: translateY(-2px);
+    }
+
+    .tool-card h3 {
+      font-size: 17px;
+
+      font-weight: 900;
+
+      margin-bottom: 8px;
+    }
+
+    .tool-card p {
+      color: #6b7280;
+
+      font-size: 13px;
+
+      line-height: 1.7;
+
+      margin-bottom: 14px;
+    }
+
+    .tool-meta {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 8px;
+
+      margin-bottom: 12px;
+    }
+
+    .tool-type,
+    .tool-price {
+      font-size: 11px;
+
+      font-weight: 800;
+
+      padding: 5px 8px;
+
+      border-radius: 8px;
+
+      background: #f0fdf4;
+
+      color: #166534;
+    }
+
+    .tool-link {
+      display: block;
+
+      text-decoration: none;
+
+      text-align: center;
+
+      background: #166534;
+
+      color: #ffffff;
+
+      padding: 9px 12px;
+
+      border-radius: 10px;
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+      transition: 0.2s;
+    }
+
+    .tool-link:hover {
+      background: #15803d;
+    }
+
+    .loading-message,
+    .error-message {
+      width: 100%;
+
+      text-align: center;
+
+      padding: 40px 20px;
+
+      color: #6b7280;
+
+      font-size: 14px;
+    }
 
     footer {
       text-align: center;
@@ -381,10 +473,6 @@
 
       margin-top: 6px;
     }
-
-    /* =========================
-       MOBILE
-    ========================= */
 
     @media (max-width: 800px) {
 
@@ -487,10 +575,6 @@
 
 <body>
 
-  <!-- =========================
-       NAVBAR
-  ========================= -->
-
   <nav>
 
     <a href="index.html" class="logo">
@@ -505,13 +589,7 @@
   </nav>
 
 
-  <!-- =========================
-       PAGE
-  ========================= -->
-
   <div class="page-layout">
-
-    <!-- SIDEBAR -->
 
     <aside class="sidebar">
 
@@ -533,7 +611,6 @@
           </span>
         </button>
 
-
         <button
           class="category-button"
           data-icon="🛠️"
@@ -545,7 +622,6 @@
             أدوات الذكاء الاصطناعي
           </span>
         </button>
-
 
         <button
           class="category-button"
@@ -559,7 +635,6 @@
           </span>
         </button>
 
-
         <button
           class="category-button"
           data-icon="🖼️"
@@ -571,7 +646,6 @@
             الصور والتصميم
           </span>
         </button>
-
 
         <button
           class="category-button"
@@ -585,7 +659,6 @@
           </span>
         </button>
 
-
         <button
           class="category-button"
           data-icon="🎵"
@@ -598,7 +671,6 @@
           </span>
         </button>
 
-
         <button
           class="category-button"
           data-icon="💻"
@@ -610,7 +682,6 @@
             AI للبرمجة
           </span>
         </button>
-
 
         <button
           class="category-button"
@@ -628,8 +699,6 @@
 
     </aside>
 
-
-    <!-- MAIN -->
 
     <main class="main-content">
 
@@ -677,20 +746,11 @@
         </div>
 
 
-        <div class="empty-content">
+        <div class="empty-content" id="toolsContainer">
 
-          <div class="empty-icon">
-            🚀
+          <div class="loading-message">
+            جاري تحميل الأدوات...
           </div>
-
-          <h3>
-            المحتوى قادم قريبًا
-          </h3>
-
-          <p>
-            سيتم إضافة الأدوات والمواقع والدورات والفيديوهات
-            الخاصة بهذا القسم بعد تجهيز قاعدة بيانات ICEMAN.
-          </p>
 
         </div>
 
@@ -700,10 +760,6 @@
 
   </div>
 
-
-  <!-- =========================
-       FOOTER
-  ========================= -->
 
   <footer>
 
@@ -726,9 +782,12 @@
   </footer>
 
 
-  <!-- =========================
-       JAVASCRIPT
-  ========================= -->
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- ملف الاتصال بقاعدة البيانات -->
+  <script src="supabase.js"></script>
+
 
   <script>
 
@@ -744,6 +803,13 @@
     const contentDescription =
       document.getElementById("contentDescription");
 
+    const toolsContainer =
+      document.getElementById("toolsContainer");
+
+
+    /* =========================
+       تغيير الأقسام الداخلية
+    ========================= */
 
     categoryButtons.forEach((button) => {
 
@@ -755,7 +821,6 @@
 
         button.classList.add("active");
 
-
         const title =
           button.dataset.title;
 
@@ -764,7 +829,6 @@
 
         const description =
           button.dataset.description;
-
 
         contentIcon.textContent = icon;
 
@@ -776,6 +840,169 @@
       });
 
     });
+
+
+    /* =========================
+       تحميل الأدوات من Supabase
+    ========================= */
+
+    async function loadTools() {
+
+      toolsContainer.innerHTML = `
+        <div class="loading-message">
+          جاري تحميل الأدوات...
+        </div>
+      `;
+
+      try {
+
+        const { data, error } =
+          await supabaseClient
+            .from("tools")
+            .select("*")
+            .eq("category", "الذكاء الاصطناعي")
+            .order("created_at", {
+              ascending: false
+            });
+
+
+        if (error) {
+          throw error;
+        }
+
+
+        if (!data || data.length === 0) {
+
+          toolsContainer.innerHTML = `
+            <div class="empty-icon">
+              🚀
+            </div>
+
+            <h3>
+              المحتوى قادم قريبًا
+            </h3>
+
+            <p>
+              سيتم إضافة الأدوات والمواقع والدورات والفيديوهات
+              الخاصة بهذا القسم بعد تجهيز قاعدة بيانات ICEMAN.
+            </p>
+          `;
+
+          return;
+        }
+
+
+        toolsContainer.className = "tools-grid";
+
+
+        toolsContainer.innerHTML =
+          data.map((tool) => {
+
+            return `
+
+              <div class="tool-card">
+
+                <h3>
+                  ${escapeHtml(tool.name || "بدون اسم")}
+                </h3>
+
+                <p>
+                  ${escapeHtml(
+                    tool.description ||
+                    "لا يوجد وصف لهذه الأداة."
+                  )}
+                </p>
+
+                <div class="tool-meta">
+
+                  <span class="tool-type">
+                    ${escapeHtml(tool.type || "موقع")}
+                  </span>
+
+                  <span class="tool-price">
+                    ${escapeHtml(tool.price || "مجاني")}
+                  </span>
+
+                </div>
+
+                <a
+                  class="tool-link"
+                  href="${escapeAttribute(tool.url || "#")}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  فتح الأداة
+                </a>
+
+              </div>
+
+            `;
+
+          }).join("");
+
+
+      } catch (error) {
+
+        console.error(
+          "Supabase error:",
+          error
+        );
+
+        toolsContainer.className =
+          "empty-content";
+
+        toolsContainer.innerHTML = `
+
+          <div class="empty-icon">
+            ⚠️
+          </div>
+
+          <h3>
+            حدث خطأ أثناء تحميل الأدوات
+          </h3>
+
+          <p>
+            تعذر الاتصال بقاعدة بيانات ICEMAN حاليًا.
+          </p>
+
+        `;
+
+      }
+
+    }
+
+
+    /* =========================
+       حماية النصوص
+    ========================= */
+
+    function escapeHtml(value) {
+
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+    function escapeAttribute(value) {
+
+      return String(value)
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+    }
+
+
+    /* =========================
+       تشغيل التحميل
+    ========================= */
+
+    loadTools();
 
   </script>
 

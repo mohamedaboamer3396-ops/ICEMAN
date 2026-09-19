@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -218,6 +219,77 @@
       font-size: 13px;
     }
 
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .tool-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 18px;
+      background: #fff;
+      transition: .2s;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-3px);
+      border-color: #86efac;
+      box-shadow: 0 10px 25px rgba(22, 101, 52, .08);
+    }
+
+    .tool-card h3 {
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      color: #111827;
+    }
+
+    .tool-card p {
+      color: #6b7280;
+      font-size: 13px;
+      line-height: 1.7;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .open-tool {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: #16a34a;
+      color: #fff;
+      padding: 10px;
+      border-radius: 11px;
+      font-weight: 800;
+      transition: .2s;
+    }
+
+    .open-tool:hover {
+      background: #15803d;
+    }
+
     .empty-content {
       min-height: 300px;
       display: flex;
@@ -269,6 +341,12 @@
       font-size: 15px;
       font-weight: 900;
       margin-top: 6px;
+    }
+
+    @media (max-width: 1000px) {
+      .tools-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 800px) {
@@ -323,6 +401,12 @@
       }
     }
 
+    @media (max-width: 600px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 500px) {
       nav {
         height: 62px;
@@ -370,7 +454,6 @@
     </div>
   </nav>
 
-
   <div class="page-layout">
 
     <aside class="sidebar">
@@ -383,6 +466,7 @@
 
         <button
           class="category-button active"
+          data-filter="all"
           data-icon="📱"
           data-title="كل التطبيقات"
           data-description="جميع التطبيقات المفيدة المتوفرة داخل ICEMAN"
@@ -391,9 +475,9 @@
           <span class="category-name">كل التطبيقات</span>
         </button>
 
-
         <button
           class="category-button"
+          data-filter="AI"
           data-icon="🤖"
           data-title="الذكاء الاصطناعي"
           data-description="تطبيقات الذكاء الاصطناعي للموبايل والأجهزة المختلفة"
@@ -402,9 +486,9 @@
           <span class="category-name">الذكاء الاصطناعي</span>
         </button>
 
-
         <button
           class="category-button"
+          data-filter="برمجة"
           data-icon="💻"
           data-title="البرمجة"
           data-description="تطبيقات تساعد المبرمجين والمطورين على التعلم والعمل"
@@ -413,9 +497,9 @@
           <span class="category-name">البرمجة</span>
         </button>
 
-
         <button
           class="category-button"
+          data-filter="Cybersecurity"
           data-icon="🔐"
           data-title="الأمن السيبراني"
           data-description="تطبيقات ومصادر مفيدة للتعلم والحماية والأمن الرقمي"
@@ -424,9 +508,9 @@
           <span class="category-name">الأمن السيبراني</span>
         </button>
 
-
         <button
           class="category-button"
+          data-filter="تصميم"
           data-icon="🎨"
           data-title="التصميم"
           data-description="تطبيقات التصميم وتعديل الصور وإنشاء المحتوى البصري"
@@ -435,9 +519,9 @@
           <span class="category-name">التصميم</span>
         </button>
 
-
         <button
           class="category-button"
+          data-filter="فيديو"
           data-icon="🎬"
           data-title="الفيديو"
           data-description="تطبيقات تحرير الفيديو وصناعة المحتوى"
@@ -446,9 +530,9 @@
           <span class="category-name">الفيديو</span>
         </button>
 
-
         <button
           class="category-button"
+          data-filter="صوت"
           data-icon="🎵"
           data-title="الصوت والموسيقى"
           data-description="تطبيقات تسجيل وتحرير وتشغيل الصوت والموسيقى"
@@ -457,9 +541,9 @@
           <span class="category-name">الصوت والموسيقى</span>
         </button>
 
-
         <button
           class="category-button"
+          data-filter="تعليم"
           data-icon="🎓"
           data-title="التعليم"
           data-description="تطبيقات الدراسة والتعلم واللغات والمصادر التعليمية"
@@ -468,9 +552,9 @@
           <span class="category-name">التعليم</span>
         </button>
 
-
         <button
           class="category-button"
+          data-filter="أدوات"
           data-icon="🛠️"
           data-title="الأدوات"
           data-description="تطبيقات مفيدة للإنتاجية والملفات والاستخدام اليومي"
@@ -482,7 +566,6 @@
       </div>
 
     </aside>
-
 
     <main class="main-content">
 
@@ -502,7 +585,6 @@
         </p>
 
       </section>
-
 
       <section class="content-box">
 
@@ -529,21 +611,23 @@
 
         </div>
 
+        <div id="toolsContainer">
 
-        <div class="empty-content">
+          <div class="empty-content">
 
-          <div class="empty-icon">
-            📱
+            <div class="empty-icon">
+              ⏳
+            </div>
+
+            <h3>
+              جاري تحميل التطبيقات...
+            </h3>
+
+            <p>
+              يتم الآن تحميل التطبيقات من قاعدة البيانات.
+            </p>
+
           </div>
-
-          <h3>
-            المحتوى قادم قريبًا
-          </h3>
-
-          <p>
-            سيتم إضافة التطبيقات وروابطها وتصنيفها داخل ICEMAN
-            بعد تجهيز قاعدة البيانات.
-          </p>
 
         </div>
 
@@ -552,7 +636,6 @@
     </main>
 
   </div>
-
 
   <footer>
 
@@ -570,6 +653,11 @@
 
   </footer>
 
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- ملف الاتصال بقاعدة البيانات -->
+  <script src="supabase.js"></script>
 
   <script>
 
@@ -585,6 +673,329 @@
     const contentDescription =
       document.getElementById("contentDescription");
 
+    const toolsContainer =
+      document.getElementById("toolsContainer");
+
+    let allApps = [];
+
+
+    function escapeHTML(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+
+    function safeURL(value) {
+
+      try {
+
+        const url = new URL(value);
+
+        if (
+          url.protocol === "http:" ||
+          url.protocol === "https:"
+        ) {
+          return url.href;
+        }
+
+      } catch (error) {}
+
+      return "#";
+
+    }
+
+
+    function renderApps(apps) {
+
+      if (!apps || apps.length === 0) {
+
+        toolsContainer.innerHTML = `
+          <div class="empty-content">
+
+            <div class="empty-icon">
+              📱
+            </div>
+
+            <h3>
+              لا توجد تطبيقات حالياً
+            </h3>
+
+            <p>
+              سيتم إضافة التطبيقات إلى هذا القسم قريباً.
+            </p>
+
+          </div>
+        `;
+
+        return;
+      }
+
+
+      toolsContainer.innerHTML = `
+
+        <div class="tools-grid">
+
+          ${apps.map((app) => {
+
+            const name =
+              escapeHTML(app.name || "تطبيق");
+
+            const description =
+              escapeHTML(
+                app.description ||
+                "تطبيق مفيد متوفر داخل ICEMAN."
+              );
+
+            const category =
+              escapeHTML(app.category || "تطبيقات");
+
+            const type =
+              escapeHTML(app.type || "تطبيق");
+
+            const price =
+              escapeHTML(app.price || "مجاني");
+
+            const url =
+              safeURL(app.url || "#");
+
+            return `
+
+              <article class="tool-card">
+
+                <h3>
+                  ${name}
+                </h3>
+
+                <p>
+                  ${description}
+                </p>
+
+                <div class="tags">
+
+                  <span class="tag">
+                    ${category}
+                  </span>
+
+                  <span class="tag">
+                    ${type}
+                  </span>
+
+                  <span class="tag">
+                    ${price}
+                  </span>
+
+                </div>
+
+                <a
+                  class="open-tool"
+                  href="${url}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  📱 فتح التطبيق
+                </a>
+
+              </article>
+
+            `;
+
+          }).join("")}
+
+        </div>
+
+      `;
+
+    }
+
+
+    function matchesFilter(app, filter) {
+
+      if (filter === "all") {
+        return true;
+      }
+
+      const text = `
+        ${app.name || ""}
+        ${app.description || ""}
+        ${app.type || ""}
+        ${app.category || ""}
+      `.toLowerCase();
+
+
+      const keywords = {
+
+        "AI": [
+          "ai",
+          "ذكاء",
+          "artificial",
+          "intelligence"
+        ],
+
+        "برمجة": [
+          "برمجة",
+          "برمج",
+          "coding",
+          "programming",
+          "developer",
+          "code"
+        ],
+
+        "Cybersecurity": [
+          "cyber",
+          "security",
+          "أمن",
+          "سيبراني",
+          "اختراق",
+          "حماية"
+        ],
+
+        "تصميم": [
+          "تصميم",
+          "design",
+          "photo",
+          "image",
+          "صور"
+        ],
+
+        "فيديو": [
+          "فيديو",
+          "video",
+          "editing",
+          "تحرير"
+        ],
+
+        "صوت": [
+          "صوت",
+          "audio",
+          "music",
+          "موسيقى"
+        ],
+
+        "تعليم": [
+          "تعليم",
+          "تعلم",
+          "education",
+          "learning",
+          "study",
+          "دراسة"
+        ],
+
+        "أدوات": [
+          "أدوات",
+          "tool",
+          "tools",
+          "utility",
+          "إنتاجية"
+        ]
+
+      };
+
+
+      return keywords[filter]?.some(
+        keyword => text.includes(keyword.toLowerCase())
+      ) || false;
+
+    }
+
+
+    function applyFilter(filter) {
+
+      if (filter === "all") {
+
+        renderApps(allApps);
+
+        return;
+      }
+
+
+      const filteredApps =
+        allApps.filter(
+          app => matchesFilter(app, filter)
+        );
+
+
+      renderApps(filteredApps);
+
+    }
+
+
+    async function loadApps() {
+
+      toolsContainer.innerHTML = `
+
+        <div class="empty-content">
+
+          <div class="empty-icon">
+            ⏳
+          </div>
+
+          <h3>
+            جاري تحميل التطبيقات...
+          </h3>
+
+          <p>
+            يتم الآن تحميل التطبيقات من قاعدة البيانات.
+          </p>
+
+        </div>
+
+      `;
+
+
+      const {
+        data,
+        error
+      } = await supabaseClient
+        .from("tools")
+        .select("*")
+        .eq("category", "تطبيقات")
+        .order("created_at", {
+          ascending: false
+        });
+
+
+      if (error) {
+
+        console.error(
+          "خطأ في تحميل التطبيقات:",
+          error
+        );
+
+
+        toolsContainer.innerHTML = `
+
+          <div class="empty-content">
+
+            <div class="empty-icon">
+              ⚠️
+            </div>
+
+            <h3>
+              حصل خطأ أثناء تحميل التطبيقات
+            </h3>
+
+            <p>
+              تأكد من اتصال الصفحة بقاعدة البيانات ثم حاول مرة أخرى.
+            </p>
+
+          </div>
+
+        `;
+
+        return;
+      }
+
+
+      allApps = data || [];
+
+      renderApps(allApps);
+
+    }
+
 
     categoryButtons.forEach((button) => {
 
@@ -594,7 +1005,9 @@
           item.classList.remove("active");
         });
 
+
         button.classList.add("active");
+
 
         const title =
           button.dataset.title;
@@ -605,15 +1018,31 @@
         const description =
           button.dataset.description;
 
-        contentIcon.textContent = icon;
-        contentTitle.textContent = title;
-        contentDescription.textContent = description;
+        const filter =
+          button.dataset.filter;
+
+
+        contentIcon.textContent =
+          icon;
+
+        contentTitle.textContent =
+          title;
+
+        contentDescription.textContent =
+          description;
+
+
+        applyFilter(filter);
 
       });
 
     });
 
+
+    loadApps();
+
   </script>
 
 </body>
 </html>
+```

@@ -24,36 +24,25 @@
       min-height: 100vh;
     }
 
-    /* =========================
-       NAVBAR
-    ========================= */
-
     nav {
       position: sticky;
       top: 0;
       z-index: 1000;
-
       width: 100%;
-
       background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(10px);
-
       border-bottom: 1px solid #e5e7eb;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       padding: 15px 6%;
     }
 
     .logo {
       text-decoration: none;
       color: #16a34a;
-
       font-size: 25px;
       font-weight: 900;
-
       letter-spacing: 1px;
     }
 
@@ -65,16 +54,11 @@
 
     .nav-links a {
       text-decoration: none;
-
       color: #374151;
-
       font-size: 14px;
       font-weight: 700;
-
       padding: 9px 13px;
-
       border-radius: 10px;
-
       transition: 0.2s ease;
     }
 
@@ -83,127 +67,75 @@
       color: #16a34a;
     }
 
-    /* =========================
-       PAGE LAYOUT
-    ========================= */
-
     .page-layout {
       width: min(1250px, 94%);
-
       margin: 0 auto;
-
       display: grid;
-
       grid-template-columns: 220px 1fr;
-
       gap: 30px;
-
       padding: 35px 0 70px;
     }
 
-    /* =========================
-       SIDEBAR
-    ========================= */
-
     .sidebar {
       position: sticky;
-
       top: 90px;
-
       height: fit-content;
-
       background: #ffffff;
-
       border: 1px solid #e5e7eb;
-
       border-radius: 20px;
-
       padding: 15px;
-
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
     }
 
     .sidebar-title {
       text-align: center;
-
       color: #111827;
-
       font-size: 16px;
-
       font-weight: 900;
-
       padding: 10px 5px 15px;
-
       border-bottom: 1px solid #f1f5f9;
-
       margin-bottom: 10px;
     }
 
     .category-button {
       width: 100%;
-
       border: none;
-
       background: transparent;
-
       color: #374151;
-
       display: flex;
-
       align-items: center;
-
       gap: 10px;
-
       text-align: right;
-
       padding: 11px 10px;
-
       border-radius: 12px;
-
       font-family: inherit;
-
       font-size: 13px;
-
       font-weight: 800;
-
       cursor: pointer;
-
       transition: 0.2s ease;
-
       margin-bottom: 4px;
     }
 
     .category-button:hover {
       background: #f0fdf4;
-
       color: #15803d;
     }
 
     .category-button.active {
       background: #dcfce7;
-
       color: #15803d;
     }
 
     .category-icon {
       width: 34px;
-
       height: 34px;
-
       min-width: 34px;
-
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
       background: #f0fdf4;
-
       border-radius: 50%;
-
       font-size: 17px;
-
       transition: 0.2s ease;
     }
 
@@ -211,267 +143,261 @@
       background: #bbf7d0;
     }
 
-    /* =========================
-       MAIN CONTENT
-    ========================= */
-
     .main-content {
       min-width: 0;
     }
 
     .hero {
       text-align: center;
-
       background: #ffffff;
-
       border: 1px solid #e5e7eb;
-
       border-radius: 22px;
-
       padding: 35px 25px;
-
       margin-bottom: 25px;
-
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.035);
     }
 
     .back-button {
       display: inline-block;
-
       text-decoration: none;
-
       color: #15803d;
-
       background: #ecfdf5;
-
       padding: 8px 14px;
-
       border-radius: 10px;
-
       font-size: 13px;
-
       font-weight: 800;
-
       margin-bottom: 18px;
-
       transition: 0.2s ease;
     }
 
     .back-button:hover {
       background: #dcfce7;
-
       transform: translateY(-2px);
     }
 
     .main-icon {
       width: 72px;
-
       height: 72px;
-
       margin: 0 auto 15px;
-
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
       background: #ecfdf5;
-
       border: 2px solid #dcfce7;
-
       border-radius: 50%;
-
       font-size: 35px;
     }
 
     .hero h1 {
       color: #16a34a;
-
       font-size: clamp(32px, 5vw, 48px);
-
       font-weight: 900;
-
       margin-bottom: 8px;
     }
 
     .hero p {
       max-width: 650px;
-
       margin: auto;
-
       color: #64748b;
-
       font-size: 15px;
-
       line-height: 1.8;
     }
 
-    /* =========================
-       CONTENT BOX
-    ========================= */
-
     .content-box {
       background: #ffffff;
-
       border: 1px solid #e5e7eb;
-
       border-radius: 22px;
-
       padding: 30px;
-
       min-height: 400px;
-
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.035);
     }
 
     .content-header {
       display: flex;
-
       align-items: center;
-
       gap: 13px;
-
       padding-bottom: 20px;
-
       margin-bottom: 25px;
-
       border-bottom: 1px solid #f1f5f9;
     }
 
     .content-header-icon {
       width: 48px;
-
       height: 48px;
-
       min-width: 48px;
-
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
       background: #ecfdf5;
-
       border-radius: 50%;
-
       font-size: 23px;
     }
 
     .content-header h2 {
       color: #111827;
-
       font-size: 22px;
-
       font-weight: 900;
     }
 
     .content-header p {
       color: #64748b;
-
       font-size: 13px;
-
       margin-top: 3px;
     }
 
-    /* =========================
-       EMPTY CONTENT
-    ========================= */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .tool-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 18px;
+      transition: 0.2s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-3px);
+      border-color: #86efac;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    }
+
+    .tool-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 13px;
+      background: #dcfce7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .tool-card h3 {
+      font-size: 17px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .tool-card p {
+      color: #6b7280;
+      font-size: 13px;
+      line-height: 1.7;
+      min-height: 44px;
+      margin-bottom: 12px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+      padding: 5px 8px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .tool-link {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: #ecfdf3;
+      color: #15803d;
+      padding: 10px;
+      border-radius: 11px;
+      font-weight: 800;
+      transition: 0.2s;
+    }
+
+    .tool-link:hover {
+      background: #dcfce7;
+    }
 
     .empty-content {
       min-height: 270px;
-
       display: flex;
-
       flex-direction: column;
-
       align-items: center;
-
       justify-content: center;
-
       text-align: center;
     }
 
     .empty-icon {
       font-size: 55px;
-
       margin-bottom: 15px;
     }
 
     .empty-content h3 {
       color: #111827;
-
       font-size: 21px;
-
       font-weight: 900;
-
       margin-bottom: 8px;
     }
 
     .empty-content p {
       max-width: 500px;
-
       color: #64748b;
-
       font-size: 14px;
-
       line-height: 1.8;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
+    .loading {
+      min-height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #64748b;
+      font-size: 15px;
+      font-weight: 800;
+    }
 
     footer {
       border-top: 1px solid #e5e7eb;
-
       text-align: center;
-
       padding: 28px 20px;
-
       color: #64748b;
-
       font-size: 14px;
-
       line-height: 1.8;
-
       background: #fafafa;
     }
 
     .developer-name {
       display: block;
-
       color: #111827;
-
       font-size: 15px;
-
       font-weight: 900;
-
       margin-top: 3px;
     }
 
     .partner-name {
       display: block;
-
       color: #451a03;
-
       font-size: 15px;
-
       font-weight: 900;
-
       margin-top: 6px;
     }
 
-    /* =========================
-       TABLET
-    ========================= */
+    @media (max-width: 1000px) {
+      .tools-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
 
     @media (max-width: 800px) {
-
       .page-layout {
         grid-template-columns: 175px 1fr;
-
         gap: 18px;
       }
 
@@ -481,34 +407,23 @@
 
       .category-button {
         font-size: 12px;
-
         gap: 7px;
-
         padding: 9px 7px;
       }
 
       .category-icon {
         width: 30px;
-
         height: 30px;
-
         min-width: 30px;
-
         font-size: 15px;
       }
 
       .content-box {
         padding: 22px;
       }
-
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
-
     @media (max-width: 600px) {
-
       nav {
         padding: 12px 4%;
       }
@@ -523,85 +438,62 @@
 
       .nav-links a {
         font-size: 11px;
-
         padding: 8px 7px;
       }
 
       .page-layout {
         width: 94%;
-
         display: block;
-
         padding-top: 20px;
       }
 
       .sidebar {
         position: static;
-
         width: 100%;
-
         margin-bottom: 18px;
-
         overflow-x: auto;
-
         padding: 10px;
-
         border-radius: 17px;
+        display: flex;
+        gap: 8px;
+        scrollbar-width: thin;
       }
 
       .sidebar-title {
         display: none;
       }
 
-      .sidebar {
-        display: flex;
-
-        gap: 8px;
-
-        scrollbar-width: thin;
-      }
-
       .category-button {
         width: auto;
-
         min-width: 90px;
-
         flex-direction: column;
-
         justify-content: center;
-
         align-items: center;
-
         gap: 5px;
-
         text-align: center;
-
         margin: 0;
-
         padding: 8px;
       }
 
       .category-icon {
         width: 38px;
-
         height: 38px;
-
         min-width: 38px;
-
         font-size: 18px;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
       }
 
       .hero {
         padding: 28px 18px;
-
         border-radius: 18px;
       }
 
       .main-icon {
         width: 65px;
-
         height: 65px;
-
         font-size: 31px;
       }
 
@@ -615,7 +507,6 @@
 
       .content-box {
         padding: 20px;
-
         border-radius: 18px;
       }
 
@@ -626,23 +517,15 @@
       .empty-content {
         min-height: 230px;
       }
-
     }
   </style>
 </head>
 
 <body>
 
-  <!-- =========================
-       NAVBAR
-  ========================= -->
-
   <nav>
 
-    <a
-      href="index.html"
-      class="logo"
-    >
+    <a href="index.html" class="logo">
       ICEMAN
     </a>
 
@@ -661,16 +544,7 @@
   </nav>
 
 
-  <!-- =========================
-       PAGE
-  ========================= -->
-
   <div class="page-layout">
-
-
-    <!-- =========================
-         SIDEBAR
-    ========================= -->
 
     <aside class="sidebar">
 
@@ -678,24 +552,15 @@
         💻 تصنيفات البرمجة
       </div>
 
-
       <button
         class="category-button active"
         data-title="مواقع البرمجة"
         data-icon="🌐"
         data-description="أفضل المواقع والمنصات المفيدة للمبرمجين"
       >
-
-        <span class="category-icon">
-          🌐
-        </span>
-
-        <span>
-          مواقع البرمجة
-        </span>
-
+        <span class="category-icon">🌐</span>
+        <span>مواقع البرمجة</span>
       </button>
-
 
       <button
         class="category-button"
@@ -703,17 +568,9 @@
         data-icon="🛠️"
         data-description="أدوات تساعدك في كتابة واختبار وتطوير الأكواد"
       >
-
-        <span class="category-icon">
-          🛠️
-        </span>
-
-        <span>
-          أدوات البرمجة
-        </span>
-
+        <span class="category-icon">🛠️</span>
+        <span>أدوات البرمجة</span>
       </button>
-
 
       <button
         class="category-button"
@@ -721,17 +578,9 @@
         data-icon="🎓"
         data-description="دورات ومصادر لتعلم البرمجة وتطوير مهاراتك"
       >
-
-        <span class="category-icon">
-          🎓
-        </span>
-
-        <span>
-          الكورسات
-        </span>
-
+        <span class="category-icon">🎓</span>
+        <span>الكورسات</span>
       </button>
-
 
       <button
         class="category-button"
@@ -739,17 +588,9 @@
         data-icon="🎥"
         data-description="فيديوهات وشروحات برمجية مفيدة"
       >
-
-        <span class="category-icon">
-          🎥
-        </span>
-
-        <span>
-          الفيديوهات
-        </span>
-
+        <span class="category-icon">🎥</span>
+        <span>الفيديوهات</span>
       </button>
-
 
       <button
         class="category-button"
@@ -757,17 +598,9 @@
         data-icon="📱"
         data-description="تطبيقات مفيدة للمبرمجين والتعلم"
       >
-
-        <span class="category-icon">
-          📱
-        </span>
-
-        <span>
-          التطبيقات
-        </span>
-
+        <span class="category-icon">📱</span>
+        <span>التطبيقات</span>
       </button>
-
 
       <button
         class="category-button"
@@ -775,35 +608,18 @@
         data-icon="📚"
         data-description="كتب ومراجع ومصادر تساعدك على التطور"
       >
-
-        <span class="category-icon">
-          📚
-        </span>
-
-        <span>
-          مصادر التعلم
-        </span>
-
+        <span class="category-icon">📚</span>
+        <span>مصادر التعلم</span>
       </button>
 
     </aside>
 
 
-    <!-- =========================
-         MAIN CONTENT
-    ========================= -->
-
     <main class="main-content">
-
-
-      <!-- HERO -->
 
       <section class="hero">
 
-        <a
-          href="index.html"
-          class="back-button"
-        >
+        <a href="index.html" class="back-button">
           ← العودة إلى المجالات
         </a>
 
@@ -822,8 +638,6 @@
 
       </section>
 
-
-      <!-- CONTENT -->
 
       <section class="content-box">
 
@@ -851,21 +665,11 @@
         </div>
 
 
-        <div class="empty-content">
+        <div id="toolsContainer">
 
-          <div class="empty-icon">
-            🚀
+          <div class="loading">
+            جاري تحميل أدوات البرمجة...
           </div>
-
-          <h3>
-            المحتوى قادم
-          </h3>
-
-          <p>
-            هنا هيظهر المحتوى الخاص بهذا التصنيف.
-            بعد ربط الصفحة بقاعدة البيانات، هنقدر نعرض
-            المواقع والأدوات والكورسات والتطبيقات تلقائيًا.
-          </p>
 
         </div>
 
@@ -875,10 +679,6 @@
 
   </div>
 
-
-  <!-- =========================
-       FOOTER
-  ========================= -->
 
   <footer>
 
@@ -901,9 +701,12 @@
   </footer>
 
 
-  <!-- =========================
-       JAVASCRIPT
-  ========================= -->
+  <!-- Supabase -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="supabase.js"></script>
+
 
   <script>
 
@@ -919,6 +722,12 @@
     const contentDescription =
       document.getElementById("contentDescription");
 
+    const toolsContainer =
+      document.getElementById("toolsContainer");
+
+
+    let allTools = [];
+
 
     categoryButtons.forEach((button) => {
 
@@ -930,26 +739,345 @@
 
         button.classList.add("active");
 
-
-        const title =
-          button.dataset.title;
-
-        const icon =
+        contentIcon.textContent =
           button.dataset.icon;
 
-        const description =
+        contentTitle.textContent =
+          button.dataset.title;
+
+        contentDescription.textContent =
           button.dataset.description;
 
-
-        contentIcon.textContent = icon;
-
-        contentTitle.textContent = title;
-
-        contentDescription.textContent = description;
+        renderTools();
 
       });
 
     });
+
+
+    function escapeHTML(value) {
+
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+    function safeURL(value) {
+
+      try {
+
+        const url = new URL(value);
+
+        if (
+          url.protocol === "http:" ||
+          url.protocol === "https:"
+        ) {
+          return url.href;
+        }
+
+        return "#";
+
+      } catch {
+
+        return "#";
+
+      }
+
+    }
+
+
+    function getCurrentSection() {
+
+      const activeButton =
+        document.querySelector(".category-button.active");
+
+      if (!activeButton) {
+        return "";
+      }
+
+      return activeButton.dataset.title || "";
+
+    }
+
+
+    function matchesSection(tool) {
+
+      const section =
+        getCurrentSection();
+
+      const name =
+        String(tool.name || "").toLowerCase();
+
+      const description =
+        String(tool.description || "").toLowerCase();
+
+      const type =
+        String(tool.type || "").toLowerCase();
+
+
+      if (section === "مواقع البرمجة") {
+
+        return (
+          type.includes("موقع") ||
+          name.includes("github") ||
+          name.includes("gitlab") ||
+          name.includes("stackoverflow") ||
+          description.includes("موقع")
+        );
+
+      }
+
+
+      if (section === "أدوات البرمجة") {
+
+        return (
+          type.includes("أداة") ||
+          type.includes("اداة") ||
+          description.includes("أداة") ||
+          description.includes("اداة") ||
+          description.includes("تطوير") ||
+          description.includes("كود")
+        );
+
+      }
+
+
+      if (section === "الكورسات") {
+
+        return (
+          type.includes("كورس") ||
+          type.includes("دورة") ||
+          description.includes("كورس") ||
+          description.includes("دورة") ||
+          description.includes("تعلم")
+        );
+
+      }
+
+
+      if (section === "الفيديوهات") {
+
+        return (
+          type.includes("فيديو") ||
+          description.includes("فيديو") ||
+          description.includes("شرح")
+        );
+
+      }
+
+
+      if (section === "التطبيقات") {
+
+        return (
+          type.includes("تطبيق") ||
+          description.includes("تطبيق") ||
+          name.includes("app")
+        );
+
+      }
+
+
+      if (section === "مصادر التعلم") {
+
+        return (
+          description.includes("مصدر") ||
+          description.includes("كتاب") ||
+          description.includes("مرجع") ||
+          description.includes("تعلم")
+        );
+
+      }
+
+
+      return true;
+
+    }
+
+
+    function renderTools() {
+
+      if (!toolsContainer) return;
+
+
+      const filteredTools =
+        allTools.filter(matchesSection);
+
+
+      if (!filteredTools.length) {
+
+        toolsContainer.innerHTML = `
+
+          <div class="empty-content">
+
+            <div class="empty-icon">
+              🚀
+            </div>
+
+            <h3>
+              لا توجد أدوات في هذا القسم حاليًا
+            </h3>
+
+            <p>
+              سيتم إضافة المحتوى البرمجي إلى هذا القسم
+              من لوحة الإدارة.
+            </p>
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      toolsContainer.innerHTML = `
+
+        <div class="tools-grid">
+
+          ${filteredTools.map((tool) => {
+
+            const name =
+              escapeHTML(tool.name);
+
+            const description =
+              escapeHTML(tool.description);
+
+            const category =
+              escapeHTML(tool.category);
+
+            const type =
+              escapeHTML(tool.type);
+
+            const price =
+              escapeHTML(tool.price || "مجاني");
+
+            const url =
+              safeURL(tool.url);
+
+
+            return `
+
+              <article class="tool-card">
+
+                <div class="tool-icon">
+                  💻
+                </div>
+
+                <h3>
+                  ${name}
+                </h3>
+
+                <p>
+                  ${description}
+                </p>
+
+                <div class="tags">
+
+                  <span class="tag">
+                    ${category}
+                  </span>
+
+                  <span class="tag">
+                    ${type}
+                  </span>
+
+                  <span class="tag">
+                    ${price}
+                  </span>
+
+                </div>
+
+                <a
+                  class="tool-link"
+                  href="${url}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  🌐 فتح المحتوى
+                </a>
+
+              </article>
+
+            `;
+
+          }).join("")}
+
+        </div>
+
+      `;
+
+    }
+
+
+    async function loadTools() {
+
+      toolsContainer.innerHTML = `
+
+        <div class="loading">
+          جاري تحميل أدوات البرمجة...
+        </div>
+
+      `;
+
+
+      const {
+        data,
+        error
+      } = await supabaseClient
+        .from("tools")
+        .select("*")
+        .eq("category", "برمجة")
+        .order("created_at", {
+          ascending: false
+        });
+
+
+      if (error) {
+
+        console.error(
+          "خطأ في تحميل أدوات البرمجة:",
+          error
+        );
+
+        toolsContainer.innerHTML = `
+
+          <div class="empty-content">
+
+            <div class="empty-icon">
+              ⚠️
+            </div>
+
+            <h3>
+              حصل خطأ أثناء تحميل الأدوات
+            </h3>
+
+            <p>
+              تأكد من اتصال الصفحة بقاعدة البيانات.
+            </p>
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      allTools = data || [];
+
+      renderTools();
+
+    }
+
+
+    loadTools();
 
   </script>
 
